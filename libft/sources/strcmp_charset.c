@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strcmp_charset.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vrobin <vrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 12:03:49 by ssfar             #+#    #+#             */
-/*   Updated: 2019/11/09 12:20:22 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/03/11 13:48:08 by vrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 uint_fast16_t	strcmp_charset(const char *s1, const char *s2, char *charset)
 {
 	size_t	i;
-	
+
 	if (s1 && s2)
 	{
 		while (*s1 && *s2 && *s1 == *s2)
@@ -44,7 +44,5 @@ uint_fast16_t	strcmp_charset(const char *s1, const char *s2, char *charset)
 	}
 	if (s1)
 		return ((unsigned char)*s1);
-	else if (s2)
-		return (-((unsigned char)*s2));
-	return (0);
+	return (s2 ? -((unsigned char)*s2) : 0);
 }

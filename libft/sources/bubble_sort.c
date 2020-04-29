@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hash_to_c.c                                        :+:      :+:    :+:   */
+/*   bubble_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vrobin <vrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/11 21:07:45 by ssfar             #+#    #+#             */
-/*   Updated: 2019/11/11 21:10:39 by ssfar            ###   ########.fr       */
+/*   Created: 2020/03/10 18:01:18 by ssfar             #+#    #+#             */
+/*   Updated: 2020/03/11 13:48:39 by vrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-ssize_t	hash_to_c(char *key, ssize_t tab_size, char c)
+void	bubble_sort(size_t *arr, size_t n)
 {
 	size_t	i;
+	size_t	j;
 
 	i = 0;
-	if (key && key[0] && tab_size > 0)
+	while (i < n - 1)
 	{
-		while (key[i] && key[i] != c)
-			i++;
-		return ((key[0] + key[i]) % tab_size);
+		j = 0;
+		while (j < n - i - 1)
+		{
+			if (arr[j] > arr[j + 1])
+				u_swap(&arr[j], &arr[j + 1]);
+			j++;
+		}
+		i++;
 	}
-	return (-1);
 }

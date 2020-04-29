@@ -6,7 +6,7 @@
 #    By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 12:15:55 by ssfar             #+#    #+#              #
-#    Updated: 2019/12/11 13:45:11 by ssfar            ###   ########.fr        #
+#    Updated: 2020/04/29 12:50:29 by ssfar            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC_NAME = ft_atoi.c intlen_no_symbol.c ft_islower.c ft_lstdelone.c \
   str_is_alpha.c ft_strcat.c ft_striter.c strn_is_charset.c strrev.c \
   utoa_base.c count_char_occur.c ft_isascii.c ft_isupper.c ft_lstnew.c \
   ft_putchar.c str_is_charset.c ft_strchr.c ft_striteri.c ft_strncat.c \
-  ft_strsplit.c count_word.c ft_isblank.c ft_isxdigit.c \
+  ft_strsplit.c count_word.c ft_isblank.c ft_isxdigit.c strcmp_charset.c \
   ft_memalloc.c ft_putchar_fd.c str_is_lowercase.c strchr_len.c \
   ft_strjoin.c ft_strncmp.c ft_strstr.c free_strtab.c ischarset.c \
   ft_itoa.c ft_memccpy.c ft_putendl.c str_is_numeric.c ft_strclr.c \
@@ -41,11 +41,11 @@ SRC_NAME = ft_atoi.c intlen_no_symbol.c ft_islower.c ft_lstdelone.c \
   ft_strcpy.c ft_strlen.c ft_strnequ.c strupcase.c intlen.c ft_isgraph.c \
   ft_lstdel.c ft_memcpy.c ft_putnbr_fd.c strcapitalize.c ft_strdel.c \
   strlowcase.c ft_strnew.c swap.c repeat_chardup.c str_is_numeric_no_symbol.c \
-  strjoin_free.c utoa.c uintlen.c upower.c round_float.c \
+  strjoin_free.c utoa.c u_swap.c uintlen.c upower.c round_float.c \
   get_float_mantissa.c aproximative_ftoa_no_symbol.c strtab.c \
-  free_strtab_offset.c ft_memdel.c gnl_no_buff.c atou.c hash.c hash_to_c.c\
-  atoi_overflow.c \
-  get_next_line.c strtab_iteri.c \
+  free_strtab_offset.c ft_memdel.c gnl_no_buff.c atou.c bubble_sort.c \
+  strtab_iteri.c atoi_overflow.c \
+  get_next_line.c \
   ft_printf/ft_printf.c \
   ft_printf/parsing.c \
   ft_printf/flags.c \

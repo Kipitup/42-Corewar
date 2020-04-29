@@ -16,7 +16,7 @@
 ** Return 1 if the character (c) is an ascii character, otherwise return 0.
 */
 
-char	ft_isascii(int c)
+uint_fast8_t	ft_isascii(int_fast8_t c)
 {
 	return (c < 0 || c > 127 ? 0 : 1);
 }

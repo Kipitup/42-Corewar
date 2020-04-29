@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hash.c                                             :+:      :+:    :+:   */
+/*   u_swap.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/11 15:29:11 by ssfar             #+#    #+#             */
-/*   Updated: 2019/11/11 20:47:40 by ssfar            ###   ########.fr       */
+/*   Created: 2020/03/10 17:52:05 by ssfar             #+#    #+#             */
+/*   Updated: 2020/03/10 21:19:52 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-ssize_t	hash(char *key, ssize_t tab_size)
+/*
+** Swap the two numbers (a) and (b).
+*/
+
+void	u_swap(size_t *a, size_t *b)
 {
-	if (key && key[0] && tab_size > 0)
-		return ((key[0] + key[ft_strlen(key)]) % tab_size);
-	return (-1);
+	size_t	cache;
+
+	if (a && b)
+	{
+		cache = *a;
+		*a = *b;
+		*b = cache;
+	}
 }
