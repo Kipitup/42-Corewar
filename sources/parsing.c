@@ -1,0 +1,105 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/04/21 15:56:23 by ssfar             #+#    #+#             */
+/*   Updated: 2020/04/21 15:56:23 by ssfar            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "corewar_vm.h"
+
+void	parsing(int ac, char **av, t_vm *vm)
+{
+	unsigned int	i;
+
+	i = 1;
+	while (i < ac)
+	{
+		if (ft_strlen(av[i]) > 4
+			&& ft_strcmp(&(av[i][ft_strlen(av[i]) - 4]), ".cor" == 0))
+			set_option_id(av, i, vm);
+		else if (ft_strcmp(av[i], "-n") == 0)
+			get_option_id(ac, av, &i, vm);
+		else if (ft_strcmp(av[i], "-v") == 0)
+			vm->visualiser = true;
+		else if (ft_strcmp(av[i], "-dump") == 0)
+			get_dump_cycle(ac, av, &i, vm);
+		else
+			exit_failure("Usage : ./corewar "
+			"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
+		i++;
+	}
+}
+
+void	count_player(int ac, char **av, t_vm *vm)
+{
+	unsigned int	i;
+
+	vm->nb_player = 0;
+	i = 1;
+	while (i < ac)
+	{
+		if (ft_strcmp(&(av[i][ft_strlen(av[i]) - 4]), ".cor" == 0))
+		{
+			vm->nb_player++;
+			if (vm->nb_player == 0 || vm->nb_player > MAX_PLAYERS)
+				exit_failure("Too many players", NULL, false);
+		}
+		i++;
+	}
+	if (vm->nb_player < 1)
+		exit_failure("Usage : ./corewar "
+		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
+}
+
+void	get_option_id(int ac, char **av, unsigned int *i, t_vm *vm)
+{
+	*i++;
+	if (*i == ac || vm->option_id != 0)
+		exit_failure("Usage : ./corewar "
+		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
+	if (atoi_overlfow(av[*i], &(vm->option_id)))
+		exit_failure("Player number is too big", NULL, false);
+	if (vm->option_id < 1 || vm->option_id > vm->nb_player)
+	{
+		ft_dprintf(2, "player number must be between 1 and %d\n", MAX_PLAYERS);
+		exit(-1);
+	}
+}
+
+/*
+** Get the option -n value and verify if it's a valid number **
+*/
+
+void	get_dump_cycle(int ac, char **av, unsigned int *i, t_vm *vm)
+{
+	*i++;
+	if (*i == ac)
+		exit_failure("Usage : ./corewar "
+		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
+	if (!str_is_numeric_no_symbol(av[*i]))
+		exit_failure("Dump cycle must be a non negative number", NULL, false);
+	if (atoi_overflow(av[*i], vm->dump))
+		exit_failure("Dump cycle is too big", NULL, false);
+}
+
+void	set_option_id(char **av, unsigned int i, t_vm *vm)
+{
+	if (vm->option_id != 0)
+	{
+		if (vm->player[vm->option_id - 1].file != NULL)
+			exit_failure("Same player ID can't be used twice", NULL, false);
+		vm->player[vm->option_id - 1].file = av[i];
+		vm->option_id = 0;
+	}
+}
+
+/*
+** Verify if the option -n value has already been used, if not, **
+** store the name of the related file **
+** inside an array where the index correspond to it's id - 1. **
+*/
