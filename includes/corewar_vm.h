@@ -66,4 +66,22 @@ typedef struct		s_vm
 **
 */
 
+void	create_new_cursor(t_vm *vm, t_cursor *parent);
+void	read_player_file(t_vm *vm);
+void	check_file(t_vm *vm, int fd, unsigned int i);
+void	check_for_null_bytes(t_vm *vm, int fd, unsigned int i);
+void	u_big_endian_to_u(unsigned int *big_endian);
+void	u_little_endian_to_u(unsigned int *little_endian);
+void	corewar_vm(int ac, char **av);
+void	init(int ac, char **av, t_vm *vm);
+void	complete_player_id(int ac, char **av, t_vm *vm);
+void	exit_failure(char *error_message, char *file, t_bool call_perror);
+void	dump(t_vm *vm);
+void	print_player(t_vm *vm);
+void	parsing(int ac, char **av, t_vm *vm);
+void	count_player(int ac, char **av, t_vm *vm);
+void	get_option_id(int ac, char **av, unsigned int *i, t_vm *vm);
+void	get_dump_cycle(int ac, char **av, unsigned int *i, t_vm *vm);
+void	set_option_id(char **av, unsigned int i, t_vm *vm);
+
 #endif

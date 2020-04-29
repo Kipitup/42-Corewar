@@ -28,6 +28,7 @@ void	corewar_vm(int ac, char **av)
 	parsing(ac, av, &vm);
 	complete_player_id(ac, av, &vm);
 	read_player_file(&vm);
+	print_player(&vm);
 }
 
 void	init(int ac, char **av, t_vm *vm)

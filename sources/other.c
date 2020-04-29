@@ -1,0 +1,55 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   other.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/04/29 13:47:04 by ssfar             #+#    #+#             */
+/*   Updated: 2020/04/29 13:47:04 by ssfar            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "corewar_vm.h"
+
+void	dump(t_vm *vm)
+{
+	unsigned int	i;
+	unsigned int	j;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		ft_printf("%#06x : ", i);
+		j = 0;
+		while (j < 32)
+		{
+			ft_printf("%02x ", vm->arena[i]);
+			i++;
+			if (i == MEM_SIZE)
+			{
+				write(1, "\n", 1);
+				exit(1);
+			}
+			j++;
+		}
+		write(1, "\n", 1);
+	}
+	exit(0);
+}
+
+void	print_player(t_vm *vm)
+{
+	unsigned int	i;
+	
+	ft_printf("Introducing contestants...\n");
+	i = 0;
+	while (i < vm->nb_player)
+	{
+		ft_printf("* Player %u, ", i + 1);
+		ft_printf("weighing %u bytes, ", vm->player[i].prog_size);
+		ft_printf("\"%s\"", vm->player[i].prog_name);
+		ft_printf("(\"%s\") !\n", vm->player[i].comment);
+		i++;
+	}
+}
