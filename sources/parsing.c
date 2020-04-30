@@ -14,13 +14,13 @@
 
 void	parsing(int ac, char **av, t_vm *vm)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 1;
 	while (i < ac)
 	{
 		if (ft_strlen(av[i]) > 4
-			&& ft_strcmp(&(av[i][ft_strlen(av[i]) - 4]), ".cor" == 0))
+			&& ft_strcmp(&(av[i][ft_strlen(av[i]) - 4]), ".cor") == 0)
 			set_option_id(av, i, vm);
 		else if (ft_strcmp(av[i], "-n") == 0)
 			get_option_id(ac, av, &i, vm);
@@ -37,16 +37,16 @@ void	parsing(int ac, char **av, t_vm *vm)
 
 void	count_player(int ac, char **av, t_vm *vm)
 {
-	unsigned int	i;
+	int	i;
 
 	vm->nb_player = 0;
 	i = 1;
 	while (i < ac)
 	{
-		if (ft_strcmp(&(av[i][ft_strlen(av[i]) - 4]), ".cor" == 0))
+		if (ft_strcmp(&(av[i][ft_strlen(av[i]) - 4]), ".cor") == 0)
 		{
 			vm->nb_player++;
-			if (vm->nb_player == 0 || vm->nb_player > MAX_PLAYERS)
+			if (vm->nb_player < 1 || vm->nb_player > MAX_PLAYERS)
 				exit_failure("Too many players", NULL, false);
 		}
 		i++;
@@ -56,13 +56,13 @@ void	count_player(int ac, char **av, t_vm *vm)
 		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
 }
 
-void	get_option_id(int ac, char **av, unsigned int *i, t_vm *vm)
+void	get_option_id(int ac, char **av, int *i, t_vm *vm)
 {
-	*i++;
+	(*i)++;
 	if (*i == ac || vm->option_id != 0)
 		exit_failure("Usage : ./corewar "
 		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
-	if (atoi_overlfow(av[*i], &(vm->option_id)))
+	if (atoi_overflow(av[*i], &(vm->option_id)))
 		exit_failure("Player number is too big", NULL, false);
 	if (vm->option_id < 1 || vm->option_id > vm->nb_player)
 	{
@@ -75,19 +75,19 @@ void	get_option_id(int ac, char **av, unsigned int *i, t_vm *vm)
 ** Get the option -n value and verify if it's a valid number **
 */
 
-void	get_dump_cycle(int ac, char **av, unsigned int *i, t_vm *vm)
+void	get_dump_cycle(int ac, char **av, int *i, t_vm *vm)
 {
-	*i++;
+	(*i)++;
 	if (*i == ac)
 		exit_failure("Usage : ./corewar "
 		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
 	if (!str_is_numeric_no_symbol(av[*i]))
 		exit_failure("Dump cycle must be a non negative number", NULL, false);
-	if (atoi_overflow(av[*i], vm->dump))
+	if (atou_overflow(av[*i], &(vm->dump)))
 		exit_failure("Dump cycle is too big", NULL, false);
 }
 
-void	set_option_id(char **av, unsigned int i, t_vm *vm)
+void	set_option_id(char **av, int i, t_vm *vm)
 {
 	if (vm->option_id != 0)
 	{

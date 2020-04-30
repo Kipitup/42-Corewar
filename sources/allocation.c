@@ -17,5 +17,4 @@ void	create_new_cursor(t_vm *vm, t_cursor *parent)
 		tmp_cursor->wait_cylces = 0;
 		// ...
 	}
-
 }

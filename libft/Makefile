@@ -6,7 +6,7 @@
 #    By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 12:15:55 by ssfar             #+#    #+#              #
-#    Updated: 2020/04/29 12:50:29 by ssfar            ###   ########.fr        #
+#    Updated: 2020/04/30 14:21:08 by ssfar            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ SRC_NAME = ft_atoi.c intlen_no_symbol.c ft_islower.c ft_lstdelone.c \
   strjoin_free.c utoa.c u_swap.c uintlen.c upower.c round_float.c \
   get_float_mantissa.c aproximative_ftoa_no_symbol.c strtab.c \
   free_strtab_offset.c ft_memdel.c gnl_no_buff.c atou.c bubble_sort.c \
-  strtab_iteri.c atoi_overflow.c \
+  strtab_iteri.c atoi_overflow.c atou_overflow.c\
   get_next_line.c \
   ft_printf/ft_printf.c \
   ft_printf/parsing.c \

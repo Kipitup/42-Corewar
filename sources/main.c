@@ -51,7 +51,7 @@ void	init(int ac, char **av, t_vm *vm)
 
 void	complete_player_id(int ac, char **av, t_vm *vm)
 {
-	unsigned int	i;
+	int				i;
 	unsigned int	j;
 
 	if (vm->option_id != 0)
@@ -61,7 +61,7 @@ void	complete_player_id(int ac, char **av, t_vm *vm)
 	while (i < ac)
 	{
 		if (ft_strlen(av[i]) > 4
-			&& ft_strcmp(&(av[i][ft_strlen(av[i]) - 4]), ".cor" == 0))
+			&& ft_strcmp(&(av[i][ft_strlen(av[i]) - 4]), ".cor") == 0)
 		{
 			j = 0;
 			while (j < vm->nb_player && vm->player[j].file != av[i])

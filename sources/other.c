@@ -40,8 +40,8 @@ void	dump(t_vm *vm)
 
 void	print_player(t_vm *vm)
 {
-	unsigned int	i;
-	
+	int	i;
+
 	ft_printf("Introducing contestants...\n");
 	i = 0;
 	while (i < vm->nb_player)

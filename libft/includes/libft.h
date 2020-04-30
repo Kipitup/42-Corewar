@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 19:44:32 by ssfar             #+#    #+#             */
-/*   Updated: 2020/04/29 12:51:24 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/04/30 14:25:59 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ uint_fast8_t	intlen(ssize_t nb);
 uint_fast8_t	intlen_no_symbol(ssize_t nb);
 uint_fast8_t	ft_isalnum(int_fast8_t c);
 uint_fast8_t	ft_isalpha(int_fast8_t c);
-uint_fast8_t	ft_isascii(int_fast8_t c);
+t_bool			ft_isascii(int c);
 uint_fast8_t	ft_isblank(int_fast8_t c);
 uint_fast8_t	ischarset(int_fast8_t c, char *charset);
 uint_fast8_t	ft_iscntrl(int_fast8_t c);
@@ -174,4 +174,5 @@ char			str_is_numeric_no_symbol(char *str);
 size_t			atou(const char *str);
 void			bubble_sort(size_t *arr, size_t n);
 t_bool			atoi_overflow(const char *str, int *result);
+t_bool			atou_overflow(const char *str, unsigned int *result);
 #endif

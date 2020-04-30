@@ -13,6 +13,7 @@
 #ifndef COREWAR_VM_H
 # define COREWAR_VM_H
 
+# include "ft_printf.h"
 # include "libft.h"
 # include "op.h"
 # include <errno.h>
@@ -54,8 +55,7 @@ typedef struct		s_vm
 	t_cursor		*cursor;
 	unsigned char	arena[MEM_SIZE];
 	int				option_id;
-	unsigned int	nb_player;
-	unsigned int	*player_id;
+	int				nb_player;
 	unsigned int	cycle_counter;
 	unsigned int	live_counter;
 	unsigned int	dump;
@@ -80,8 +80,8 @@ void	dump(t_vm *vm);
 void	print_player(t_vm *vm);
 void	parsing(int ac, char **av, t_vm *vm);
 void	count_player(int ac, char **av, t_vm *vm);
-void	get_option_id(int ac, char **av, unsigned int *i, t_vm *vm);
-void	get_dump_cycle(int ac, char **av, unsigned int *i, t_vm *vm);
-void	set_option_id(char **av, unsigned int i, t_vm *vm);
+void	get_option_id(int ac, char **av, int *i, t_vm *vm);
+void	get_dump_cycle(int ac, char **av, int *i, t_vm *vm);
+void	set_option_id(char **av, int i, t_vm *vm);
 
 #endif
