@@ -76,13 +76,14 @@ void	get_option_id(int ac, char **av, int *i, t_vm *vm)
 void	get_dump_cycle(int ac, char **av, int *i, t_vm *vm)
 {
 	(*i)++;
-	if (*i == ac)
+	if (*i == ac || vm->dump == true)
 		exit_failure("Usage : ./corewar "
 		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
 	if (!str_is_numeric_no_symbol(av[*i]))
 		exit_failure("Dump cycle must be a non negative number", NULL, false);
-	if (atou_overflow(av[*i], &(vm->dump)))
+	if (atou_overflow(av[*i], &(vm->dump_cycle)))
 		exit_failure("Dump cycle is too big", NULL, false);
+	vm->dump = true;
 }
 
 void	set_option_id(char **av, int i, t_vm *vm)

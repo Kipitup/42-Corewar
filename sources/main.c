@@ -39,6 +39,7 @@ void	init(int ac, char **av, t_vm *vm)
 	vm->option_id = 0;
 	vm->cursor = NULL;
 	vm->visualiser = false;
+	vm->dump = false;
 	count_player(ac, av, vm);
 	if (!(vm->player = malloc(sizeof((*vm->player)) * vm->nb_player)))
 		exit_failure("Malloc error", NULL, false);

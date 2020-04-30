@@ -58,8 +58,9 @@ typedef struct		s_vm
 	int				nb_player;
 	unsigned int	cycle_counter;
 	unsigned int	live_counter;
-	unsigned int	dump;
+	unsigned int	dump_cycle;
 	t_bool			visualiser;
+	t_bool			dump;
 }					t_vm;
 
 /*

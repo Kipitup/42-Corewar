@@ -91,7 +91,7 @@ void	u_big_endian_to_u(unsigned int *b_endian)
 }
 
 /*
-** Store the big endian value of an unsigned int as the current endiannes.
+** Store the big endian value of an unsigned int on the current endiannes.
 */
 
 void	u_little_endian_to_u(unsigned int *l_endian)
@@ -103,7 +103,7 @@ void	u_little_endian_to_u(unsigned int *l_endian)
 }
 
 /*
-** Store the little endian value of an unsigned int as the current endiannes.
+** Store the little endian value of an unsigned int on the current endiannes.
 */
 
 
