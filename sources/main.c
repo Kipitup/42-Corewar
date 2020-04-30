@@ -27,13 +27,14 @@ void	corewar_vm(int ac, char **av)
 	init(ac, av, &vm);
 	parsing(ac, av, &vm);
 	complete_player_id(ac, av, &vm);
+	ft_bzero(vm.arena, MEM_SIZE);
 	read_player_file(&vm);
 	print_player(&vm);
 }
 
 void	init(int ac, char **av, t_vm *vm)
 {
-	unsigned int	i;
+	int	i;
 
 	vm->option_id = 0;
 	vm->cursor = NULL;
@@ -52,7 +53,7 @@ void	init(int ac, char **av, t_vm *vm)
 void	complete_player_id(int ac, char **av, t_vm *vm)
 {
 	int				i;
-	unsigned int	j;
+	int				j;
 
 	if (vm->option_id != 0)
 		exit_failure("Usage : ./corewar "
@@ -83,7 +84,10 @@ void	exit_failure(char *error_message, char *file, t_bool call_perror)
 	if (call_perror == true)
 		perror(error_message);
 	else if (file != NULL)
+	{
 		ft_dprintf(2, error_message, file);
+		write(2, "\n", 1);
+	}
 	else if (error_message)
 	{
 		write(2, error_message, ft_strlen(error_message));

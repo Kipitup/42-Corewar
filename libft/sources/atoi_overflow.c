@@ -15,27 +15,27 @@
 t_bool	atoi_overflow(const char *str, int *result)
 {
 	int			prev;
-	signed char	positive;
+	signed char	mult;
 	t_bool		overflow;
 
 	overflow = false;
 	if (!str || !result)
 		return (overflow);
-	positive = 1;
+	mult = 1;
 	*result = 0;
 	while (ft_isspace(*str))
 		str++;
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
-			positive = -1;
+			mult = -1;
 		str++;
 	}
 	while (ft_isdigit(*str))
 	{
 		prev = *result;
-		*result = *result * 10 + (*(str++) - '0') * positive;
-		if ((*result < prev && positive) || ((*result > prev && !positive)))
+		*result = *result * 10 + (*(str++) - '0') * mult;
+		if ((*result < prev && mult == 1) || ((*result > prev && mult == -1)))
 			overflow = true;
 	}
 	return (overflow);

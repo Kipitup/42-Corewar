@@ -63,12 +63,10 @@ void	get_option_id(int ac, char **av, int *i, t_vm *vm)
 		exit_failure("Usage : ./corewar "
 		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
 	if (atoi_overflow(av[*i], &(vm->option_id)))
-		exit_failure("Player number is too big", NULL, false);
+		exit_failure("Player -n number is too big", NULL, false);
 	if (vm->option_id < 1 || vm->option_id > vm->nb_player)
-	{
-		ft_dprintf(2, "player number must be between 1 and %d\n", MAX_PLAYERS);
-		exit(-1);
-	}
+		exit_failure("Player -n number must be between 1 and the ammount of "
+		"files", NULL, false);
 }
 
 /*

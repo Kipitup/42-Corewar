@@ -15,7 +15,7 @@
 void	read_player_file(t_vm *vm)
 {
 	int	fd;
-	unsigned int	i;
+	int	i;
 	unsigned int	tmp;
 	ssize_t	ret;
 
@@ -43,7 +43,7 @@ void	read_player_file(t_vm *vm)
 **
 */
 
-void	check_file(t_vm *vm, int fd, unsigned int i)
+void	check_file(t_vm *vm, int fd, int i)
 {
 	ssize_t			ret;
 	unsigned int	tmp;
@@ -52,7 +52,7 @@ void	check_file(t_vm *vm, int fd, unsigned int i)
 		exit_failure("Read", NULL, true);
 	u_big_endian_to_u(&tmp);
 	if (tmp != (COREWAR_EXEC_MAGIC))
-		exit_failure("Invalid magic in %s", vm->player[i].file, false);
+		exit_failure("Invalid magic header in %s", vm->player[i].file, false);
 	if ((ret = read(fd, vm->player[i].prog_name, PROG_NAME_LENGTH)) == -1)
 		exit_failure("Read", NULL, true);
 	vm->player[i].prog_name[PROG_NAME_LENGTH] = '\0';
@@ -61,7 +61,7 @@ void	check_file(t_vm *vm, int fd, unsigned int i)
 		exit_failure("read", NULL, true);
 	u_big_endian_to_u(&vm->player[i].prog_size);
 	if (vm->player[i].prog_size > CHAMP_MAX_SIZE)
-		exit_failure("%s prog size is too big", vm->player[i].file, false);
+		exit_failure("%s program size is too big", vm->player[i].file, false);
 	if ((ret = read(fd, vm->player[i].comment, COMMENT_LENGTH)) == -1)
 		exit_failure("read", NULL, true);
 	vm->player[i].comment[COMMENT_LENGTH] = '\0';

@@ -20,7 +20,7 @@ void	dump(t_vm *vm)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		ft_printf("%#06x : ", i);
+		ft_printf("0x%04x : ", i);
 		j = 0;
 		while (j < 32)
 		{
@@ -29,7 +29,7 @@ void	dump(t_vm *vm)
 			if (i == MEM_SIZE)
 			{
 				write(1, "\n", 1);
-				exit(1);
+				exit(0);
 			}
 			j++;
 		}
@@ -48,7 +48,7 @@ void	print_player(t_vm *vm)
 	{
 		ft_printf("* Player %u, ", i + 1);
 		ft_printf("weighing %u bytes, ", vm->player[i].prog_size);
-		ft_printf("\"%s\"", vm->player[i].prog_name);
+		ft_printf("\"%s\" ", vm->player[i].prog_name);
 		ft_printf("(\"%s\") !\n", vm->player[i].comment);
 		i++;
 	}

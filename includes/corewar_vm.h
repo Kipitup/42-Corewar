@@ -68,7 +68,7 @@ typedef struct		s_vm
 
 void	create_new_cursor(t_vm *vm, t_cursor *parent);
 void	read_player_file(t_vm *vm);
-void	check_file(t_vm *vm, int fd, unsigned int i);
+void	check_file(t_vm *vm, int fd, int i);
 void	check_for_null_bytes(t_vm *vm, int fd, unsigned int i);
 void	u_big_endian_to_u(unsigned int *big_endian);
 void	u_little_endian_to_u(unsigned int *little_endian);
