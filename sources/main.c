@@ -40,6 +40,9 @@ void	init(int ac, char **av, t_vm *vm)
 	vm->cursor = NULL;
 	vm->visualiser = false;
 	vm->dump = false;
+	vm->cycle_to_die = CYCLE_TO_DIE;
+	vm->check_counter = 0;
+	vm->live_counter = 0;
 	count_player(ac, av, vm);
 	if (!(vm->player = malloc(sizeof((*vm->player)) * vm->nb_player)))
 		exit_failure("Malloc error", NULL, false);
@@ -49,6 +52,7 @@ void	init(int ac, char **av, t_vm *vm)
 		vm->player[i].file = NULL;
 		i++;
 	}
+	vm->last_reported_alive = -i;
 }
 
 void	complete_player_id(int ac, char **av, t_vm *vm)

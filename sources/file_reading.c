@@ -17,6 +17,7 @@ void	read_player_file(t_vm *vm)
 	int	fd;
 	int	i;
 	unsigned int	tmp;
+	unsigned char	code_buf[CHAMP_MAX_SIZE];
 	ssize_t	ret;
 
 	i = 0;
@@ -25,8 +26,7 @@ void	read_player_file(t_vm *vm)
 		if ((fd = open(vm->player[i].file, O_RDONLY)) == -1)
 			exit_failure("Open", NULL, true);
 		check_file(vm, fd, i);
-		if ((ret = read(fd, &(vm->arena[vm->cursor->pc]),
-			vm->player[i].prog_size)) == -1)
+		if ((ret = read(fd, code_buf, vm->player[i].prog_size)) == -1)
 			exit_failure("Read", NULL, true);
 		if (ret != vm->player[i].prog_size)
 			exit_failure("%s is not well formated", vm->player[i].file, false);
@@ -34,6 +34,7 @@ void	read_player_file(t_vm *vm)
 			exit_failure("Read", NULL, true);
 		if (ret != 0)
 			exit_failure("%s is not well formated", vm->player[i].file, false);
+		load_champion_code(vm, code_buf, vm->player[i].prog_size);
 		close(fd);
 		i++;
 	}
@@ -82,6 +83,18 @@ void	check_for_null_bytes(t_vm *vm, int fd, unsigned int i)
 			exit_failure("%s is not well formated", vm->player[i].file, false);
 }
 
+void	load_champion_code(t_vm *vm, char *champion_code, int size)
+{
+	int	j;
+
+	j = 0;
+	while (j < size)
+	{
+		vm->arena[(vm->cursor->pc + j) % MEM_SIZE] = champion_code[j];
+		j++;
+	}
+}
+
 void	u_big_endian_to_u(unsigned int *b_endian)
 {
 	unsigned char *p;
@@ -93,17 +106,3 @@ void	u_big_endian_to_u(unsigned int *b_endian)
 /*
 ** Store the big endian value of an unsigned int on the current endiannes.
 */
-
-void	u_little_endian_to_u(unsigned int *l_endian)
-{
-	unsigned char	*p;
-
-	p = (unsigned char*)l_endian;
-	*l_endian = p[3] * 256 * 256 * 256 + p[2] * 256 * 256 + p[1] * 256 + p[0];
-}
-
-/*
-** Store the little endian value of an unsigned int on the current endiannes.
-*/
-
-

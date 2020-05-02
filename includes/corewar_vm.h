@@ -56,9 +56,12 @@ typedef struct		s_vm
 	unsigned char	arena[MEM_SIZE];
 	int				option_id;
 	int				nb_player;
-	unsigned int	cycle_counter;
+	int				last_reported_alive;
 	unsigned int	live_counter;
-	unsigned int	dump_cycle;
+	unsigned int	check_counter;
+	unsigned int	cycle_counter;
+	unsigned int	cycle_to_die;
+	unsigned int	cycle_to_dump;
 	t_bool			visualiser;
 	t_bool			dump;
 }					t_vm;
@@ -82,7 +85,8 @@ void	print_player(t_vm *vm);
 void	parsing(int ac, char **av, t_vm *vm);
 void	count_player(int ac, char **av, t_vm *vm);
 void	get_option_id(int ac, char **av, int *i, t_vm *vm);
-void	get_dump_cycle(int ac, char **av, int *i, t_vm *vm);
+void	get_cycle_to_dump(int ac, char **av, int *i, t_vm *vm);
 void	set_option_id(char **av, int i, t_vm *vm);
+void	load_champion_code(t_vm *vm, char *champion_code, int size);
 
 #endif
