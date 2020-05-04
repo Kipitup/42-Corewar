@@ -30,7 +30,7 @@ void	corewar_vm(int ac, char **av)
 	ft_bzero(vm.arena, MEM_SIZE);
 	read_player_file(&vm);
 	print_player(&vm);
-
+	game_loop(&vm);
 	print_winner(&vm);
 }
 
