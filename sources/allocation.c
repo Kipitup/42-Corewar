@@ -3,18 +3,21 @@
 
 void	create_new_cursor(t_vm *vm, t_cursor *parent)
 {
-	t_cursor	*tmp_cursor;
+	t_cursor	*new_cursor;
 
-	if (!(tmp_cursor = malloc(sizeof(*tmp_cursor))))
+	if (!(new_cursor = malloc(sizeof(*new_cursor))))
 		exit_failure("Malloc Error", NULL, false);
-	tmp_cursor->next = vm->cursor;
-	vm->cursor = tmp_cursor;
+	new_cursor->next = vm->cursor;
+	vm->cursor = new_cursor;
 	if (parent != NULL)
-		*tmp_cursor = *parent; 
+		*new_cursor = *parent; 
 	else
 	{
-		tmp_cursor->carry = false;
-		tmp_cursor->wait_cylces = 0;
+		new_cursor->carry = false;
+		new_cursor->live = false;
+		new_cursor->wait_cylces = 0;
+		new_cursor->jump = 0;
+		new_cursor->opcode = 0;
 		// ...
 	}
 }

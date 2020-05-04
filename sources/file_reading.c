@@ -83,7 +83,7 @@ void	check_for_null_bytes(t_vm *vm, int fd, unsigned int i)
 			exit_failure("%s is not well formated", vm->player[i].file, false);
 }
 
-void	load_champion_code(t_vm *vm, char *champion_code, int size)
+void	load_champion_code(t_vm *vm, unsigned char *champion_code, int size)
 {
 	int	j;
 

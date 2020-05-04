@@ -24,13 +24,13 @@ typedef struct		s_cursor
 {
 	//int			id;
 	t_bool			carry;
+	t_bool			live;
 	unsigned char	opcode;
-	unsigned int	last_live;
 	unsigned int	wait_cylces;
 	unsigned short	pc;
 	unsigned short	jump;
 	int				registries[REG_NUMBER];
-	struct s_cursor	*next;	
+	struct s_cursor	*next;
 }					t_cursor;
 
 /*
@@ -40,9 +40,9 @@ typedef struct		s_cursor
 typedef struct		s_player
 {
 	char			*file;
-	char			prog_name[PROG_NAME_LENGTH + 1];
+	unsigned char	prog_name[PROG_NAME_LENGTH + 1];
 	unsigned int	prog_size;
-	char			comment[COMMENT_LENGTH + 1];
+	unsigned char	comment[COMMENT_LENGTH + 1];
 }					t_player;
 
 /*
@@ -87,6 +87,11 @@ void	count_player(int ac, char **av, t_vm *vm);
 void	get_option_id(int ac, char **av, int *i, t_vm *vm);
 void	get_cycle_to_dump(int ac, char **av, int *i, t_vm *vm);
 void	set_option_id(char **av, int i, t_vm *vm);
-void	load_champion_code(t_vm *vm, char *champion_code, int size);
+void	load_champion_code(t_vm *vm, unsigned char *champion_code, int size);
+void	print_winner(t_vm *vm);
+void	game_loop(t_vm *vm);
+void	check(t_vm *vm, t_cursor *cur, t_cursor *prev);
+void	remove_cursor(t_vm *vm, t_cursor **cur, t_cursor **prev);
+void	uptdate_cursor(t_vm *vm, t_cursor *tmp);
 
 #endif

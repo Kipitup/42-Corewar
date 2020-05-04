@@ -70,3 +70,6 @@ typedef char	t_arg_type;
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
 #endif
+
+// to do :
+// protect cycle_to_die #define from being bigger than an unsigned int

@@ -30,6 +30,8 @@ void	corewar_vm(int ac, char **av)
 	ft_bzero(vm.arena, MEM_SIZE);
 	read_player_file(&vm);
 	print_player(&vm);
+
+	print_winner(&vm);
 }
 
 void	init(int ac, char **av, t_vm *vm)
@@ -41,6 +43,7 @@ void	init(int ac, char **av, t_vm *vm)
 	vm->visualiser = false;
 	vm->dump = false;
 	vm->cycle_to_die = CYCLE_TO_DIE;
+	vm->cycle_counter = 0;
 	vm->check_counter = 0;
 	vm->live_counter = 0;
 	count_player(ac, av, vm);

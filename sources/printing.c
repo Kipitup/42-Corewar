@@ -53,3 +53,10 @@ void	print_player(t_vm *vm)
 		i++;
 	}
 }
+
+void	print_winner(t_vm *vm)
+{
+	ft_printf("Contestant %d, ", vm->last_reported_alive);
+	ft_printf("\"%s\", ", vm->player[vm->last_reported_alive - 1].prog_name);
+	ft_printf("has won !");
+}
