@@ -7,10 +7,8 @@ void	create_new_cursor(t_vm *vm, t_cursor *parent)
 
 	if (!(new_cursor = malloc(sizeof(*new_cursor))))
 		exit_failure("Malloc Error", NULL, false);
-	new_cursor->next = vm->cursor;
-	vm->cursor = new_cursor;
 	if (parent != NULL)
-		*new_cursor = *parent; 
+		*new_cursor = *parent;
 	else
 	{
 		new_cursor->carry = false;
@@ -20,4 +18,6 @@ void	create_new_cursor(t_vm *vm, t_cursor *parent)
 		new_cursor->opcode = 0;
 		// ...
 	}
+	new_cursor->next = vm->cursor;
+	vm->cursor = new_cursor;
 }
