@@ -14,11 +14,9 @@
 
 void	game_loop(t_vm *vm)
 {
-	t_cursor	*tmp;
-
 	while (vm->cursor != NULL)
 	{
-		if (vm->cycle_counter == vm->cycle_to_dump)
+		if (vm->dump && vm->cycle_counter == vm->cycle_to_dump)
 			dump(vm);
 		if (vm->cycle_counter == vm->cycle_to_die)
 			check(vm, vm->cursor, NULL);

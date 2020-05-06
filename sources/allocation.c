@@ -16,6 +16,8 @@ void	create_new_cursor(t_vm *vm, t_cursor *parent)
 		new_cursor->wait_cylces = 0;
 		new_cursor->jump = 0;
 		new_cursor->opcode = 0;
+		bzero(new_cursor->registries,
+			REG_NUMBER * sizeof(*(new_cursor->registries)));
 		// ...
 	}
 	new_cursor->next = vm->cursor;

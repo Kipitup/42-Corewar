@@ -26,6 +26,7 @@ SRC_NAME =	allocation.c \
 			main.c \
 			parsing.c \
 			printing.c \
+			vm.c
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_NAME))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_NAME:.c=.o))
