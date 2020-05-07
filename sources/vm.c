@@ -14,13 +14,15 @@
 
 void	game_loop(t_vm *vm)
 {
-	while (vm->cursor != NULL)
+	while (1)
 	{
-		if (vm->dump && vm->cycle_counter == vm->cycle_to_dump)
-			dump(vm);
 		if (vm->cycle_counter == vm->cycle_to_die)
 			check(vm, vm->cursor, NULL);
+		if (vm->cursor == NULL)
+			break;
 		uptdate_cursor(vm, vm->cursor);
+		if (vm->dump && vm->cycle_counter == vm->cycle_to_dump)
+			dump(vm);
 		vm->cycle_counter++;
 	}
 }
@@ -72,26 +74,25 @@ void	uptdate_cursor(t_vm *vm, t_cursor *tmp)
 {
 	while (tmp != NULL)
 	{
-		if (tmp->jump != 0)
-		{
-			tmp->pc = (tmp->pc + tmp->jump) % MEM_SIZE;
-			tmp->jump = 0;
-		}
-		else if (tmp->wait_cylces > 0)
-			tmp->wait_cylces--;
-		else if (tmp->opcode == 0)
+		if (tmp->opcode == 0)
 		{
 			tmp->opcode = vm->arena[tmp->pc];
-			if (tmp->opcode > 16)
+			if (tmp->opcode == 0 || tmp->opcode > 16)
 			{
-				tmp->wait_cylces = 0;
-				tmp->jump = 1;
+				tmp->opcode = 0;
+				tmp->wait_cylces = 1;
 			}
-			// else
-			//	tmp->wait_cylces = 
+			//else
+			//	tmp->wait_cylces = nb of cycle that the function takes
 		}
-		// else
-		// function that handle opcode
+		tmp->wait_cylces--;
+		if (tmp->wait_cylces == 0)
+		{
+			if (tmp->opcode == 0)
+				tmp->pc	= (tmp->pc + 1) % MEM_SIZE;
+			//else
+			//function that handle opcode
+		}
 		tmp = tmp->next;
 	}
 }
