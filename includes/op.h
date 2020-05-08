@@ -22,6 +22,10 @@
 # define REG_SIZE				4
 # define DIR_SIZE				REG_SIZE
 
+/*
+** Those values should not exceed 8
+*/
+
 
 # define REG_CODE				1
 # define DIR_CODE				2

@@ -38,14 +38,15 @@ void	init(int ac, char **av, t_vm *vm)
 {
 	int	i;
 
-	vm->option_id = 0;
 	vm->cursor = NULL;
 	vm->visualiser = false;
 	vm->dump = false;
+	vm->nbr_live_reached = false;
 	vm->cycle_to_die = CYCLE_TO_DIE;
 	vm->cycle_counter = 0;
 	vm->check_counter = 0;
 	vm->live_counter = 0;
+	vm->option_id = 0;
 	count_player(ac, av, vm);
 	if (!(vm->player = malloc(sizeof((*vm->player)) * vm->nb_player)))
 		exit_failure("Malloc error", NULL, false);
@@ -56,6 +57,7 @@ void	init(int ac, char **av, t_vm *vm)
 		i++;
 	}
 	vm->last_reported_alive = -i;
+	vm->big_endian = big_endian();
 }
 
 void	complete_player_id(int ac, char **av, t_vm *vm)

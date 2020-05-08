@@ -16,13 +16,13 @@ void	game_loop(t_vm *vm)
 {
 	while (1)
 	{
+		if (vm->dump && vm->cycle_counter == vm->cycle_to_dump)
+			dump(vm);
 		if (vm->cycle_counter == vm->cycle_to_die)
 			check(vm, vm->cursor, NULL);
 		if (vm->cursor == NULL)
 			break;
-		uptdate_cursor(vm, vm->cursor);
-		if (vm->dump && vm->cycle_counter == vm->cycle_to_dump)
-			dump(vm);
+		update_cursor(vm, vm->cursor);
 		vm->cycle_counter++;
 	}
 }
@@ -40,12 +40,14 @@ void	check(t_vm *vm, t_cursor *cur, t_cursor *prev)
 		else
 			remove_cursor(vm, &cur, &prev);
 	}
-	if (vm->live_counter >= NBR_LIVE || vm->check_counter == MAX_CHECKS)
+	if (vm->live_counter == NBR_LIVE || vm->nbr_live_reached == true
+		|| vm->check_counter == MAX_CHECKS)
 	{
 		vm->cycle_to_die -= CYCLE_DELTA;
 		if (vm->cycle_to_die > vm->cycle_counter)
 			vm->cycle_to_die = 0;
 		vm->live_counter = 0;
+		vm->nbr_live_reached = false;
 		vm->check_counter = 0;
 	}
 	else
@@ -70,7 +72,7 @@ void	remove_cursor(t_vm *vm, t_cursor **cur, t_cursor **prev)
 	}
 }
 
-void	uptdate_cursor(t_vm *vm, t_cursor *tmp)
+void	update_cursor(t_vm *vm, t_cursor *tmp)
 {
 	while (tmp != NULL)
 	{

@@ -68,8 +68,8 @@ void	check_file(t_vm *vm, int fd, int i)
 	vm->player[i].comment[COMMENT_LENGTH] = '\0';
 	check_for_null_bytes(vm, fd, i);
 	create_new_cursor(vm, NULL);
-	vm->cursor->registries[0] = -i - 1;
-	vm->cursor->pc = MEM_SIZE / vm->nb_player * i;
+	long_to_reg(vm->cursor->registries[0], -i -1, vm->big_endian);
+	vm->cursor->pc = (MEM_SIZE / vm->nb_player) * i;
 }
 
 void	check_for_null_bytes(t_vm *vm, int fd, unsigned int i)

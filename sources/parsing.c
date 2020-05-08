@@ -81,7 +81,7 @@ void	get_cycle_to_dump(int ac, char **av, int *i, t_vm *vm)
 		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
 	if (!str_is_numeric_no_symbol(av[*i]))
 		exit_failure("Dump cycle must be a non negative number", NULL, false);
-	if (atou_overflow(av[*i], &(vm->cycle_to_dump)))
+	if (atoul_overflow(av[*i], &(vm->cycle_to_dump)))
 		exit_failure("Dump cycle is too big", NULL, false);
 	vm->dump = true;
 }
