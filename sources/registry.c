@@ -12,7 +12,7 @@
 
 #include "corewar_vm.h"
 
-void	long_to_reg(unsigned char *reg, long long value, t_bool big_endian)
+void	i_to_reg(unsigned char *reg, int value, t_bool big_endian)
 {
 	int				i;
 	int				j;
@@ -22,7 +22,7 @@ void	long_to_reg(unsigned char *reg, long long value, t_bool big_endian)
 	i = REG_SIZE - 1;
 	if (big_endian == true)
 	{
-		j = 7;
+		j = 3;
 		while (i > -1)
 			reg[i--] = p[j--];
 	}
@@ -34,19 +34,19 @@ void	long_to_reg(unsigned char *reg, long long value, t_bool big_endian)
 	}
 }
 
-long long	reg_to_long(unsigned char *reg, t_bool big_endian)
+int	reg_to_i(unsigned char *reg, t_bool big_endian)
 {
 	int				i;
 	int				j;
 	unsigned char	*p;
-	long long		ret;
+	int				ret;
 
 	ret = 0;
 	p = (unsigned char *)(&ret);
 	i = REG_SIZE - 1;
 	if (big_endian == true)
 	{
-		j = 7;
+		j = 3;
 		while (i > -1)
 			p[j--] = reg[i--];
 	}

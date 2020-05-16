@@ -40,10 +40,6 @@ void	read_player_file(t_vm *vm)
 	}
 }
 
-/*
-**
-*/
-
 void	check_file(t_vm *vm, int fd, int i)
 {
 	ssize_t			ret;
@@ -68,7 +64,7 @@ void	check_file(t_vm *vm, int fd, int i)
 	vm->player[i].comment[COMMENT_LENGTH] = '\0';
 	check_for_null_bytes(vm, fd, i);
 	create_new_cursor(vm, NULL);
-	long_to_reg(vm->cursor->registries[0], -i -1, vm->big_endian);
+	i_to_reg(vm->cursor->registries[0], -i -1, vm->big_endian);
 	vm->cursor->pc = (MEM_SIZE / vm->nb_player) * i;
 }
 

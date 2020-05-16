@@ -94,8 +94,8 @@ void		game_loop(t_vm *vm);
 void		check(t_vm *vm, t_cursor *cur, t_cursor *prev);
 void		remove_cursor(t_vm *vm, t_cursor **cur, t_cursor **prev);
 void		update_cursor(t_vm *vm, t_cursor *tmp);
-void		long_to_reg(unsigned char *reg, long long value, t_bool big_endian);
-long long	reg_to_long(unsigned char *reg, t_bool big_endian);
+void		i_to_reg(unsigned char *reg, int value, t_bool big_endian);
+int			reg_to_i(unsigned char *reg, t_bool big_endian);
 t_bool		atol_overflow(const char *str, long long *result);
 
 #endif
