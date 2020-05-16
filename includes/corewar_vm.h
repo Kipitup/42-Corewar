@@ -22,15 +22,14 @@
 
 typedef struct		s_cursor
 {
-	//int			id;
-	t_bool			carry;
-	t_bool			live;
-	unsigned char	opcode;
-	unsigned int	wait_cylces;
-	unsigned short	pc;
-	unsigned short	jump;
-	unsigned char	registries[REG_NUMBER][REG_SIZE];
-	struct s_cursor	*next;
+	t_bool				carry;
+	t_bool				live;
+	unsigned char		opcode;
+	unsigned int		wait_cylces;
+	unsigned long long	pc;
+	unsigned long long	jump;
+	unsigned char		registries[REG_NUMBER][REG_SIZE];
+	struct s_cursor		*next;
 }					t_cursor;
 
 /*

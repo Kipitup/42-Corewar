@@ -13,18 +13,9 @@
 #ifndef OP_H
 # define OP_H
 
-/*
-** Toutes les tailles sont en octets.
-** On part du principe qu'un int fait 32 bits. Est-ce vrai chez vous ?
-*/
-
 # define IND_SIZE				2
 # define REG_SIZE				4
 # define DIR_SIZE				REG_SIZE
-
-/*
-** Those values should not exceed 8
-*/
 
 
 # define REG_CODE				1
@@ -74,6 +65,3 @@ typedef char	t_arg_type;
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
 #endif
-
-// to do :
-// protect cycle_to_die #define from being bigger than an unsigned int
