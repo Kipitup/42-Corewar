@@ -6,7 +6,7 @@
 #    By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 12:15:55 by ssfar             #+#    #+#              #
-#    Updated: 2020/05/08 15:45:20 by ssfar            ###   ########.fr        #
+#    Updated: 2020/05/24 20:11:27 by ssfar            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,22 @@ INC_DIR = includes
 SRC_DIR = sources
 OBJ_DIR = objects
 
-SRC_NAME =	allocation.c \
+SRC_NAME =	add_sub_fun.c \
+			allocation.c \
+			binary_fun.c \
 			file_reading.c \
+			fork_fun.c \
+			get_value.c \
+			ld_fun.c \
+			live_jmp_aff_fun.c \
+			load.c \
 			main.c \
 			parsing.c \
 			printing.c \
-			vm.c \
-			registry.c
+			registry.c \
+			store_fun.c \
+			utils.c \
+			vm.c
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_NAME))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_NAME:.c=.o))

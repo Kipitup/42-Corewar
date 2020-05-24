@@ -14,11 +14,11 @@
 
 void	read_player_file(t_vm *vm)
 {
-	int	fd;
-	int	i;
+	int				fd;
+	int				i;
 	unsigned int	tmp;
 	unsigned char	code_buf[CHAMP_MAX_SIZE];
-	ssize_t	ret;
+	ssize_t			ret;
 
 	i = 0;
 	while (i < vm->nb_player)
@@ -64,7 +64,7 @@ void	check_file(t_vm *vm, int fd, int i)
 	vm->player[i].comment[COMMENT_LENGTH] = '\0';
 	check_for_null_bytes(vm, fd, i);
 	create_new_cursor(vm, NULL);
-	i_to_reg(vm->cursor->registries[0], -i -1, vm->big_endian);
+	cpy_to_reg(&(vm->cursor->reg[0]), -i -1);
 	vm->cursor->pc = (MEM_SIZE / vm->nb_player) * i;
 }
 

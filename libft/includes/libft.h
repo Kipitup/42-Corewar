@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 19:44:32 by ssfar             #+#    #+#             */
-/*   Updated: 2020/05/08 21:33:49 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/05/24 20:10:39 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,5 +177,4 @@ t_bool			atoi_overflow(const char *str, int *result);
 t_bool			atou_overflow(const char *str, unsigned int *result);
 t_bool			atol_overflow(const char *str, long long *result);
 t_bool			atoul_overflow(const char *str, unsigned long long *result);
-t_bool			big_endian();
 #endif

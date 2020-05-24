@@ -57,7 +57,8 @@ void	init(int ac, char **av, t_vm *vm)
 		i++;
 	}
 	vm->last_reported_alive = -i;
-	vm->big_endian = big_endian();
+	load_function(vm);
+	load_cost(vm);
 }
 
 void	complete_player_id(int ac, char **av, t_vm *vm)

@@ -20,7 +20,7 @@ void	game_loop(t_vm *vm)
 			dump(vm);
 		if (vm->cycle_counter == vm->cycle_to_die)
 			check(vm, vm->cursor, NULL);
-		if (vm->cursor == NULL)
+		if (vm->cursor == NULL || vm->cycle_to_die == 0)
 			break;
 		update_cursor(vm, vm->cursor);
 		vm->cycle_counter++;
@@ -40,20 +40,19 @@ void	check(t_vm *vm, t_cursor *cur, t_cursor *prev)
 		else
 			remove_cursor(vm, &cur, &prev);
 	}
+	vm->check_counter++;
 	if (vm->live_counter == NBR_LIVE || vm->nbr_live_reached == true
 		|| vm->check_counter == MAX_CHECKS)
 	{
 		vm->cycle_to_die -= CYCLE_DELTA;
-		if (vm->cycle_to_die > vm->cycle_counter)
-			vm->cycle_to_die = 0;
-		vm->live_counter = 0;
-		vm->nbr_live_reached = false;
 		vm->check_counter = 0;
+		if (vm->cycle_to_die >= vm->cycle_counter)
+			vm->cycle_to_die = 0;
 	}
-	else
-		vm->check_counter++;
 	vm->cycle_to_dump -= vm->cycle_counter;
 	vm->cycle_counter = 0;
+	vm->live_counter = 0;
+	vm->nbr_live_reached = false;
 }
 
 void	remove_cursor(t_vm *vm, t_cursor **cur, t_cursor **prev)
@@ -80,20 +79,19 @@ void	update_cursor(t_vm *vm, t_cursor *tmp)
 		{
 			tmp->opcode = vm->arena[tmp->pc];
 			if (tmp->opcode == 0 || tmp->opcode > 16)
-			{
 				tmp->opcode = 0;
-				tmp->wait_cylces = 1;
-			}
-			//else
-			//	tmp->wait_cylces = nb of cycle that the function takes
+			tmp->wait_cylces = vm->cost[tmp->opcode];
 		}
 		tmp->wait_cylces--;
 		if (tmp->wait_cylces == 0)
 		{
 			if (tmp->opcode == 0)
 				tmp->pc	= (tmp->pc + 1) % MEM_SIZE;
-			//else
-			//function that handle opcode
+			else
+			{
+				vm->tab[tmp->opcode](vm, tmp);
+				tmp->opcode = 0;
+			}
 		}
 		tmp = tmp->next;
 	}

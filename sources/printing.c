@@ -57,5 +57,5 @@ void	print_player(t_vm *vm)
 void	print_winner(t_vm *vm)
 {
 	ft_printf("Player %d ", -vm->last_reported_alive);
-	ft_printf("(%s) won", vm->player[-vm->last_reported_alive - 1].prog_name);
+	ft_printf("(%s) won\n", vm->player[-vm->last_reported_alive - 1].prog_name);
 }
