@@ -16,6 +16,8 @@ void	game_loop(t_vm *vm)
 {
 	while (1)
 	{
+		if (vm->visualiser == true)
+			display_round(vm);
 		if (vm->dump && vm->cycle_counter == vm->cycle_to_dump)
 			dump(vm);
 		if (vm->cycle_counter == vm->cycle_to_die)

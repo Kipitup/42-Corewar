@@ -66,6 +66,7 @@ void	check_file(t_vm *vm, int fd, int i)
 	create_new_cursor(vm, NULL);
 	cpy_to_reg(&(vm->cursor->reg[0]), -i -1);
 	vm->cursor->pc = (MEM_SIZE / vm->nb_player) * i;
+	vm->cursor->player_id = i + 1;
 }
 
 void	check_for_null_bytes(t_vm *vm, int fd, unsigned int i)

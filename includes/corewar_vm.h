@@ -36,6 +36,7 @@ typedef struct		s_cursor
 	unsigned long long	wait_cylces;
 	unsigned long long	pc;
 	unsigned int		reg[REG_NUMBER];
+	int					player_id;
 	struct s_cursor		*next;
 }					t_cursor;
 
