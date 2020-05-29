@@ -74,6 +74,7 @@ typedef struct		s_vm
 	t_player			*player;
 	t_cursor			*cursor;
 	unsigned char		arena[MEM_SIZE];
+	unsigned char		arena_color[MEM_SIZE];
 	int					option_id;
 	int					nb_player;
 	int					last_reported_alive;

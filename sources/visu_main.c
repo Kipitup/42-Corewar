@@ -22,52 +22,51 @@ t_window    *init_window(void)
 
 void	color_player(t_vm *vm, size_t act_player, size_t size, size_t nb_player)
 {
-	size_t i;
+	int i;
 	size_t j;
 	size_t start;
 
 	i = 0;
 	j = 0;
 	start = MEM_SIZE / nb_player;
-	start = start * act_player;
-	(void)size;
-	while (j < 64)
+	start = start * (act_player -1);
+	while (j < 64 && size > 0)
     {
 		i = 0;
-		while (i < 64)
+		while (i < 64 && size > 0)
 		{
-			// if (i - start != size)
-				// break;
-			if (i >= start && size > 0)
+			if (i + j * 64 >= start && size > 0)
 			{
-				getch();
+				vm->arena_color[i + j * 64] = act_player;
 				size--;
-				mvwprintw(vm->window->memory, j, i * 3, "%c%02x", ' ', vm->arena[i + j * 64]);
 			}
 			i++;
 		}
-		wrefresh(vm->window->memory);
 		j++;
     }
 }
 
-void	init_color_stuff(t_vm *vm)
+void	init_color_arena(t_vm *vm)
 {
 	int i;
 
 	i = 0;
-	init_pair(0, COLOR_RED, COLOR_BLACK);
+	init_pair(0, COLOR_WHITE, COLOR_BLACK);
 	init_pair(1, COLOR_GREEN, COLOR_BLACK);
 	init_pair(2, COLOR_BLUE, COLOR_BLACK);
-	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(3, COLOR_RED, COLOR_BLACK);
+	init_pair(4, COLOR_CYAN, COLOR_BLACK);
+	while (i < 4096)
+	{
+		vm->arena_color[i] = 0;
+		i++;
+	}
+	i = 0;
     while (i < vm->nb_player)
     {
-		wattron(vm->window->memory, COLOR_PAIR(i));
-		color_player(vm, i, vm->player[i].prog_size, vm->nb_player);
-		wrefresh(vm->window->memory);
+		color_player(vm, i + 1, vm->player[i].prog_size, vm->nb_player);
 		i++;
     }
-	wattrset(vm->window->memory, A_NORMAL);
 }
 
 int    init_visu(t_vm *vm)
@@ -97,6 +96,7 @@ int    init_visu(t_vm *vm)
     box(vm->window->info1, 0, 0);
     box(vm->window->info2, 0, 0);
     box(vm->window->champions, 0, 0);
+	init_color_arena(vm);	
     return(0);
 }
 
@@ -114,14 +114,15 @@ void	aff_memory(t_vm *vm)
 	size_t i;
 	size_t j;
 
-	// init_color_stuff(vm);
 	j = 0;
     while (j < 64)
     {
 		i = 0;
 		while (i < 64)
 		{
+			wattron(vm->window->memory, COLOR_PAIR(vm->arena_color[i + j * 64]));
 			mvwprintw(vm->window->memory, j, i * 3, "%c%02x", ' ', vm->arena[i + j * 64]);
+			wattroff(vm->window->memory, COLOR_PAIR(vm->arena_color[i + j * 64]));
 			i++;
 		}
 		j++;
@@ -157,6 +158,7 @@ void	aff_champions(t_vm *vm)
 	j = 1;
 	while (i < vm->nb_player)
 	{
+		wattron(vm->window->champions, COLOR_PAIR(i + 1));
     	mvwprintw(vm->window->champions, j, 1, "Player %d :", i + 1);
     	j += 2;
     	mvwprintw(vm->window->champions, j, 1, "%s", vm->player[i].prog_name);
@@ -175,6 +177,13 @@ void    display_round(t_vm *vm)
 
 void	color_arena(t_vm *vm, t_cursor *cursor)
 {
-	refresh_window(vm);
-	(void)cursor;
+	size_t i;
+
+	i = 0;
+	// ft_printf("reg :%d, pc %d, id %d\n", cursor->reg[REG_NUMBER], cursor->pc, cursor->player_id);
+	while (i < 8)
+	{
+		vm->arena_color[cursor->pc + i] = cursor->player_id;
+		i++;
+	}
 }

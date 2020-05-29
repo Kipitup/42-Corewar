@@ -29,7 +29,7 @@ void	ft_st(t_vm *vm, t_cursor *cur)
 		{
 			write_int(vm, value,
 				((short)get_mem(vm, cur->pc + 3, 2)) % IDX_MOD + cur->pc);
-			// vm->visualiser == true ? color_arena(vm, cur) : 0;
+			vm->visualiser == true ? color_arena(vm, cur) : 0;
 		}
 	}
 	cur->pc = (cur->pc + 2 + jump(arg, true)) % MEM_SIZE;
@@ -59,7 +59,7 @@ void	ft_sti(t_vm *vm, t_cursor *cur)
 		else
 			pos[1] = (short)get_mem(vm, cur->pc + 3 + arg_size(arg[1], 0), 2);
 		write_int(vm, value, cur->pc + (pos[0] + pos[1]) % IDX_MOD);
-		// vm->visualiser == true ? color_arena(vm, cur) : 0;
+		vm->visualiser == true ? color_arena(vm, cur) : 0;
 	}
 	cur->pc = (cur->pc + 2 + jump(arg, false)) % MEM_SIZE;
 }
