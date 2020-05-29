@@ -42,15 +42,18 @@ void	print_player(t_vm *vm)
 {
 	int	i;
 
-	ft_printf("Introducing contestants...\n");
-	i = 0;
-	while (i < vm->nb_player)
+	if (vm->visualiser != true)
 	{
-		ft_printf("* Player %u, ", i + 1);
-		ft_printf("weighing %u bytes, ", vm->player[i].prog_size);
-		ft_printf("\"%s\" ", vm->player[i].prog_name);
-		ft_printf("(\"%s\") !\n", vm->player[i].comment);
-		i++;
+		ft_printf("Introducing contestants...\n");
+		i = 0;
+		while (i < vm->nb_player)
+		{
+			ft_printf("* Player %u, ", i + 1);
+			ft_printf("weighing %u bytes, ", vm->player[i].prog_size);
+			ft_printf("\"%s\" ", vm->player[i].prog_name);
+			ft_printf("(\"%s\") !\n", vm->player[i].comment);
+			i++;
+		}
 	}
 }
 

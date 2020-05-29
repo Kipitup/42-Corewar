@@ -36,7 +36,8 @@ SRC_NAME =	add_sub_fun.c \
 			registry.c \
 			store_fun.c \
 			utils.c \
-			vm.c
+			vm.c \
+			visu_main.c \
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_NAME))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_NAME:.c=.o))
@@ -49,13 +50,13 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C ./libft
-	@$(CC) $(CFLAGS) $(OBJ) ./libft/libft.a -o $@
+	@$(CC) $(CFLAGS) $(OBJ) -lncurses ./libft/libft.a -o $@
 	@chmod 755 $(NAME)
 	@printf "$(GREEN)$(NAME) Makefile : $(OBJ_DIR) and $(NAME) created\n$(EOC)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -lncurses -c $< -o $@
 
 clean:
 	@make -C ./libft fclean

@@ -19,6 +19,7 @@
 # include <errno.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <ncurses.h>
 
 # define ALL 7
 # define DIR_IND 6
@@ -56,6 +57,18 @@ typedef struct		s_player
 ** info from .cor file
 */
 
+typedef struct s_window
+{
+    WINDOW *memory;
+    WINDOW *info1;
+    WINDOW *info2;
+    WINDOW *champions;
+}               t_window;
+
+/*
+** windows
+*/
+
 typedef struct		s_vm
 {
 	t_player			*player;
@@ -74,6 +87,7 @@ typedef struct		s_vm
 	t_bool				dump;
 	void				(*tab[17])(struct s_vm *vm, t_cursor *cur);
 	unsigned int		cost[17];
+    t_window			*window;
 }					t_vm;
 
 /*
@@ -139,4 +153,14 @@ unsigned int	get_reg(t_vm *vm, t_cursor *cur, unsigned long long pos);
 void			cpy_to_reg(unsigned int *reg, unsigned int value);
 t_bool			check_3reg(t_vm *vm, t_cursor *cur, unsigned char *arg,
 					t_bool big_dir);
+
+t_window		*init_window(void);
+int				init_visu(t_vm *vm);
+void			display_round(t_vm *vm);
+void			refresh_window(t_vm *vm);
+void			aff_memory(t_vm *vm);
+void			aff_info(t_vm *vm);
+void			aff_champions(t_vm *vm);
+void			display_round(t_vm *vm);
+void			color_arena(t_vm *vm, t_cursor *cursor);
 #endif

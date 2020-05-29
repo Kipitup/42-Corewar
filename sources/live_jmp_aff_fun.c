@@ -21,8 +21,11 @@ void	ft_live(t_vm *vm, t_cursor *cur)
 	cur->live = true;
 	if (-live_id > 0 && -live_id <= vm->nb_player)
 	{
-		ft_printf("A process shows that player %d (%s) is alive\n",
-			-live_id, vm->player[-live_id - 1].prog_name);
+		if (vm->visualiser != true)
+		{
+			ft_printf("A process shows that player %d (%s) is alive\n",
+				-live_id, vm->player[-live_id - 1].prog_name);
+		}
 		vm->last_reported_alive = live_id;
 		vm->live_counter++;
 		if (vm->live_counter == NBR_LIVE)
