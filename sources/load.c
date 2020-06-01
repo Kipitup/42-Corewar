@@ -30,7 +30,6 @@ void	load_function(t_vm *vm)
 	vm->tab[14] = ft_lldi;
 	vm->tab[15] = ft_lfork;
 	vm->tab[16] = ft_aff;
-	load_cost(vm);
 }
 
 void	load_cost(t_vm *vm)
