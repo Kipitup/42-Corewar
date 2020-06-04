@@ -140,7 +140,7 @@ void			ft_zjmp(t_vm *vm, t_cursor *cur);
 void			ft_aff(t_vm *vm, t_cursor *cur);
 void			write_int(t_vm *vm, unsigned int value, unsigned long long pos);
 void			write_h(t_vm *vm, unsigned short value, unsigned long long pos);
-unsigned short	read_h(t_vm *vm, unsigned long long pos);
+unsigned int	read_h(t_vm *vm, unsigned long long pos);
 unsigned int	read_int(t_vm *vm, unsigned long long pos);
 void			ft_st(t_vm *vm, t_cursor *cur);
 void			ft_sti(t_vm *vm, t_cursor *cur);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ld_fun.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cbretagn <cbretagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 17:39:49 by cbretagn          #+#    #+#             */
-/*   Updated: 2020/05/24 17:38:42 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/04 17:26:50 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_lld(t_vm *vm, t_cursor *cur)
 		if (arg[0] == DIR_CODE)
 			value = read_int(vm, cur->pc + 2);
 		else
-			value = read_int(vm, cur->pc
+			value = read_h(vm, cur->pc
 				+ (short)get_mem(vm, cur->pc + 2, 2));
 		cur->reg[vm->arena[(cur->pc + 2 + arg_size(arg[0], true))
 			% MEM_SIZE] - 1] = value;

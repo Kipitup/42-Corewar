@@ -22,7 +22,7 @@ void	dump(t_vm *vm)
 	{
 		ft_printf("0x%04x : ", i);
 		j = 0;
-		while (j < 32)
+		while (j < 31)
 		{
 			ft_printf("%02x ", vm->arena[i]);
 			i++;
@@ -33,7 +33,8 @@ void	dump(t_vm *vm)
 			}
 			j++;
 		}
-		write(1, "\n", 1);
+		ft_printf("%02x\n", vm->arena[i]);
+		i++;
 	}
 	exit(0);
 }

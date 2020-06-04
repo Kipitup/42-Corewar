@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   live_jmp_aff_fun.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cbretagn <cbretagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 19:20:43 by ssfar             #+#    #+#             */
-/*   Updated: 2020/05/24 20:12:08 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/04 17:33:53 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,6 @@ void	ft_aff(t_vm *vm, t_cursor *cur)
 	get_ocp(vm, cur->pc + 1, arg);
 	if (check_param(arg, REG_ONLY, 0, 0)
 		&& is_reg(vm->arena[(cur->pc + 2) % MEM_SIZE]))
-		ft_printf("Aff : %c\n", get_reg(vm, cur, cur->pc + 2) % 256);
+		ft_printf("Aff: %c\n", get_reg(vm, cur, cur->pc + 2) % 256);
 	cur->pc = (cur->pc + 3) % MEM_SIZE;
 }

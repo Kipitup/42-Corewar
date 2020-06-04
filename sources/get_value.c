@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_value.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cbretagn <cbretagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 19:20:14 by ssfar             #+#    #+#             */
-/*   Updated: 2020/05/24 19:20:18 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/04 17:26:58 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,16 @@ unsigned int	read_int(t_vm *vm, unsigned long long pos)
 	return (ret);
 }
 
-unsigned short	read_h(t_vm *vm, unsigned long long pos)
+unsigned int	read_h(t_vm *vm, unsigned long long pos)
 {
-	unsigned short	ret;
-	int		i;
+	unsigned int	ret;
 	unsigned char	*p;
 
 	p = (unsigned char *)&ret;
-	i = 0;
-	while (i < 2)
-	{
-		p[i] = vm->arena[pos % MEM_SIZE];
-		pos++;
-		i++;
-	}
+	p[0] = 0;
+	p[1] = 0;
+	p[2] = vm->arena[pos % MEM_SIZE];
+	p[3] = vm->arena[(pos + 1) % MEM_SIZE];
 	return (ret);
 }
 
