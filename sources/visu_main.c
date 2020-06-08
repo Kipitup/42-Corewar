@@ -7,16 +7,19 @@ t_window    *init_window(void)
     WINDOW   *info1;
     WINDOW   *info2;
     WINDOW   *champions;
+    WINDOW   *input;
 
     memory = NULL;
     info1 = NULL;
     info2 = NULL;
     champions = NULL;
+    input = NULL;
     window = malloc(sizeof(t_window));
     window->memory = memory;
     window->info1 = info1;
     window->info2 = info2;
     window->champions = champions;
+    window->input = input;
     return (window);
 }
 
@@ -92,11 +95,13 @@ int    init_visu(t_vm *vm)
     vm->window->memory = newwin(y + 1, x + 1, 0, 0);
     vm->window->info1 = newwin(9, 75, 0, xmax - 75);
     vm->window->champions = newwin(50 - 12.5, 75, 9, xmax - 75);
+    vm->window->input = newwin(11, 75, ymax - 22, xmax - 75);
     vm->window->info2 = newwin(11, 75, ymax - 11, xmax - 75);
-    box(vm->window->info1, 0, 0);
-    box(vm->window->info2, 0, 0);
-    box(vm->window->champions, 0, 0);
-	init_color_arena(vm);	
+	init_color_arena(vm);
+	display_round(vm);
+	display_round(vm);
+	refresh_window(vm);
+	getch();
     return(0);
 }
 
@@ -106,6 +111,7 @@ void    refresh_window(t_vm *vm)
     wrefresh(vm->window->info1);
     wrefresh(vm->window->champions);
     wrefresh(vm->window->info2);
+    wrefresh(vm->window->input);
     refresh();
 }
 
@@ -128,6 +134,18 @@ void	aff_memory(t_vm *vm)
 		j++;
     }
 	wrefresh(vm->window->memory);
+}
+
+void	aff_input(t_vm *vm)
+{
+	size_t j;
+
+	j = 1;
+	mvwprintw(vm->window->input, j, 1, "Play/Pause \t\t[SPACE]");
+    j += 2;
+    mvwprintw(vm->window->input, j, 1, "Next Turn \t\t[c]");
+    j += 2;
+    mvwprintw(vm->window->input, j, 1, "Leave \t\t\t[q]");
 }
 
 void	aff_info(t_vm *vm)
@@ -172,6 +190,7 @@ void    display_round(t_vm *vm)
 	aff_memory(vm);
 	aff_info(vm);
 	aff_champions(vm);
+	aff_input(vm);
 	refresh_window(vm);
 }
 
@@ -186,4 +205,27 @@ void	color_arena(t_vm *vm, t_cursor *cursor)
 		vm->arena_color[cursor->pc + i] = cursor->player_id;
 		i++;
 	}
+}
+
+int		get_visu_input(t_vm *vm, int ch)
+{
+	nodelay(vm->window->memory, 1);
+	if (ch == 'q')
+	{
+		system("clear");
+		exit(0);
+	}
+	if (ch != 'c') // verif quon est pas en mode cycle
+	{
+		ch = wgetch(vm->window->memory);
+	}
+	if (ch == 'c') // avance cycle par cycle
+		ch = getch();
+	else if (ch == ' ') // play / pause
+	{
+		ch = wgetch(vm->window->memory);
+		while (ch != ' ' && ch != 'c' && ch != 'q')
+			ch = wgetch(vm->window->memory);
+	}
+	return (ch);
 }

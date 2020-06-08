@@ -14,8 +14,12 @@
 
 void	game_loop(t_vm *vm)
 {
+	int ch;
+
+	ch = ' ';
 	while (1)
 	{
+		ch = get_visu_input(vm, ch);
 		if (vm->visualiser == true)
 			display_round(vm);
 		if (vm->dump && vm->cycle_counter == vm->cycle_to_dump)

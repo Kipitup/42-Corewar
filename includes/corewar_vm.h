@@ -63,6 +63,7 @@ typedef struct s_window
     WINDOW *info1;
     WINDOW *info2;
     WINDOW *champions;
+    WINDOW *input;
 }               t_window;
 
 /*
@@ -164,4 +165,6 @@ void			aff_info(t_vm *vm);
 void			aff_champions(t_vm *vm);
 void			display_round(t_vm *vm);
 void			color_arena(t_vm *vm, t_cursor *cursor);
+int				get_visu_input(t_vm *vm, int ch);
+
 #endif
