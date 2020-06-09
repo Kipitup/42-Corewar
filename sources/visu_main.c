@@ -49,20 +49,49 @@ void	color_player(t_vm *vm, size_t act_player, size_t size, size_t nb_player)
     }
 }
 
+void	pair_colors(t_vm *vm)
+{
+	int i;
+
+	i = 1;
+	init_pair(i, COLOR_GREEN, COLOR_BLACK);
+	i++;
+	if (i <= vm->nb_player)
+	{
+		init_pair(i, COLOR_BLUE, COLOR_BLACK);
+		i++;
+	}
+	if (i <= vm->nb_player)
+	{
+		init_pair(i, COLOR_RED, COLOR_BLACK);
+		i++;
+	}
+	if (i <= vm->nb_player)
+		init_pair(i, COLOR_CYAN, COLOR_BLACK);
+	i = 1;
+	init_pair(i + vm->nb_player, LIGHT_GREEN, COLOR_BLACK);
+	i++;
+	if (i <= vm->nb_player)
+	{
+		init_pair(i + vm->nb_player, LIGHT_BLUE, COLOR_BLACK);
+		i++;
+	}
+	if (i <= vm->nb_player)
+	{
+		init_pair(i + vm->nb_player, LIGHT_RED, COLOR_BLACK);
+		i++;
+	}
+	if (i <= vm->nb_player)
+		init_pair(i + vm->nb_player, LIGHT_CYAN, COLOR_BLACK);
+}
+
 void	init_color_arena(t_vm *vm)
 {
 	int i;
 
 	i = 0;
 	init_pair(0, COLOR_WHITE, COLOR_BLACK);
-	init_pair(1, COLOR_GREEN, COLOR_BLACK);
-	init_pair(2, COLOR_BLUE, COLOR_BLACK);
-	init_pair(3, COLOR_RED, COLOR_BLACK);
-	init_pair(4, COLOR_CYAN, COLOR_BLACK);
-	init_pair(5, LIGHT_GREEN, COLOR_BLACK);
-	init_pair(6, LIGHT_BLUE, COLOR_BLACK);
-	init_pair(7, LIGHT_RED, COLOR_BLACK);
-	init_pair(8, LIGHT_CYAN, COLOR_BLACK);
+	pair_colors(vm);
 	while (i < 4096)
 	{
 		vm->arena_color[i] = 0;
@@ -180,7 +209,7 @@ void	aff_champions(t_vm *vm)
 	j = 1;
 	while (i < vm->nb_player)
 	{
-		wattron(vm->window->champions, COLOR_PAIR(i + 1));
+		wattron(vm->window->champions, COLOR_PAIR(i + 1 + vm->nb_player));
     	mvwprintw(vm->window->champions, j, 1, "Player %d :", i + 1);
     	j += 2;
     	mvwprintw(vm->window->champions, j, 1, "%s", vm->player[i].prog_name);
