@@ -119,8 +119,9 @@ int    init_visu(t_vm *vm)
     getmaxyx(stdscr, ymax, xmax); // get screen size
     if (ymax < 64 || xmax < 250) // too short ?
     {
-        printf("ERROR, SCREEN TO SHORT, ZOOM OUT");
-        return (-1);
+		endwin();
+        ft_printf("ERROR, SCREEN TO SHORT, ZOOM OUT");
+        exit(-1);
     }
     y = ymax;
 	x = 192;
