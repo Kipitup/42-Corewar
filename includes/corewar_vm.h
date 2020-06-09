@@ -59,12 +59,12 @@ typedef struct		s_player
 
 typedef struct s_window
 {
-    WINDOW *memory;
-    WINDOW *info1;
-    WINDOW *info2;
-    WINDOW *champions;
-    WINDOW *input;
-}               t_window;
+	WINDOW *memory;
+	WINDOW *info1;
+	WINDOW *info2;
+	WINDOW *champions;
+	WINDOW *input;
+}				t_window;
 
 /*
 ** windows
@@ -89,7 +89,7 @@ typedef struct		s_vm
 	t_bool				dump;
 	void				(*tab[17])(struct s_vm *vm, t_cursor *cur);
 	unsigned int		cost[17];
-    t_window			*window;
+	t_window			*window;
 }					t_vm;
 
 /*
@@ -164,7 +164,7 @@ void			aff_memory(t_vm *vm);
 void			aff_info(t_vm *vm);
 void			aff_champions(t_vm *vm);
 void			display_round(t_vm *vm);
-void			color_arena(t_vm *vm, t_cursor *cursor);
+void			color_arena(t_vm *vm, t_cursor *cursor, unsigned long long pos);
 int				get_visu_input(t_vm *vm, int ch);
 
 #endif
