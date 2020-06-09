@@ -19,9 +19,11 @@ void	game_loop(t_vm *vm)
 	ch = ' ';
 	while (1)
 	{
-		ch = get_visu_input(vm, ch);
 		if (vm->visualiser == true)
+		{
+			ch = get_visu_input(vm, ch);
 			display_round(vm);
+		}
 		if (vm->dump && vm->cycle_counter == vm->cycle_to_dump)
 			dump(vm);
 		if (vm->cycle_counter == vm->cycle_to_die)
