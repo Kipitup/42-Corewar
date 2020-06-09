@@ -29,6 +29,11 @@
 # define DIR_ONLY 2
 # define REG_ONLY 1
 
+# define LIGHT_BLUE 12
+# define LIGHT_GREEN 10
+# define LIGHT_RED 9
+# define LIGHT_CYAN 14
+
 typedef struct		s_cursor
 {
 	t_bool				carry;

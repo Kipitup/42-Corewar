@@ -33,6 +33,8 @@ void	game_loop(t_vm *vm)
 		update_cursor(vm, vm->cursor);
 		vm->cycle_counter++;
 	}
+	if (vm->visualiser == true)
+		endwin();
 }
 
 void	check(t_vm *vm, t_cursor *cur, t_cursor *prev)

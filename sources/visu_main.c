@@ -59,6 +59,10 @@ void	init_color_arena(t_vm *vm)
 	init_pair(2, COLOR_BLUE, COLOR_BLACK);
 	init_pair(3, COLOR_RED, COLOR_BLACK);
 	init_pair(4, COLOR_CYAN, COLOR_BLACK);
+	init_pair(5, LIGHT_GREEN, COLOR_BLACK);
+	init_pair(6, LIGHT_BLUE, COLOR_BLACK);
+	init_pair(7, LIGHT_RED, COLOR_BLACK);
+	init_pair(8, LIGHT_CYAN, COLOR_BLACK);
 	while (i < 4096)
 	{
 		vm->arena_color[i] = 0;
@@ -194,15 +198,35 @@ void    display_round(t_vm *vm)
 	refresh_window(vm);
 }
 
-void	color_arena(t_vm *vm, t_cursor *cursor)
+void	reset_light(t_vm *vm)
+{
+	size_t i;
+	size_t j;
+
+	j = 0;
+    while (j < 64)
+    {
+		i = 0;
+		while (i < 64)
+		{
+			if (vm->arena_color[i + j * 64] > vm->nb_player)
+				vm->arena_color[i + j * 64] -= vm->nb_player;
+			i++;
+		}
+		j++;
+    }
+}
+
+void	color_arena(t_vm *vm, t_cursor *cursor, unsigned long long pos)
 {
 	size_t i;
 
 	i = 0;
+	reset_light(vm);
 	// ft_printf("reg :%d, pc %d, id %d\n", cursor->reg[REG_NUMBER], cursor->pc, cursor->player_id);
 	while (i < 8)
 	{
-		vm->arena_color[cursor->pc + i] = cursor->player_id;
+		vm->arena_color[pos % MEM_SIZE + i] = cursor->player_id + vm->nb_player;
 		i++;
 	}
 }
