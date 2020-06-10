@@ -120,7 +120,7 @@ int    init_visu(t_vm *vm)
     if (ymax < 64 || xmax < 250) // too short ?
     {
 		endwin();
-        ft_printf("ERROR, SCREEN TO SHORT, ZOOM OUT");
+        ft_printf("ERROR, SCREEN TO SHORT, ZOOM OUT\n");
         exit(-1);
     }
     y = ymax;
