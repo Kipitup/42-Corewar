@@ -14,15 +14,29 @@ create_test_champ ()
 
 check_diff ()
 {
-	$1 test_champ.s > /dev/null;
+	$1 test_champ.s > /dev/null 2>&1 ;
 	mv test_champ.cor output_ours.cor;
-	./asm_official test_champ.s > /dev/null;
+	./asm_official test_champ.s > /dev/null 2>&1 ;
 	mv test_champ.cor output_of.cor;
 	EX="$(cmp -s output_of.cor output_ours.cor; echo $?)"
         if [ $EX != 0 ]
         then
                 printf "$RED$2 KO\n$RES";
                 cmp -l output_of.cor output_ours.cor;
+                cp test_champ.s "error"$err".s";
+                let "err=err+1";
+        else
+                printf "$GREEN$2 OK\n$RES";
+        fi
+}
+
+check_diff_inv ()
+{
+	EX_OURS="$($1 test_champ.s > /dev/null 2>&1 ; echo $?)"
+	EX_OF="$(./asm_official test_champ.s > /dev/null 2>&1 ; echo $?)"
+        if [ "$EX_OF" != "$EX_OURS" ]
+        then
+                printf "$RED$2 KO\n$RES";
                 cp test_champ.s "error"$err".s";
                 let "err=err+1";
         else
@@ -70,6 +84,48 @@ check_valid ()
 	done
 }
 
+check_invalid ()
+{
+	cmd=( "and r1 r2 r3\n" "and r1;r2;r3\n" 
+		"live %%-1"
+		"and r1,r2,r3 live %%-1\n" "" 
+		"live %%:label\n;label: live %%-1\n" 
+		"live r1\n" 
+		"st 23,%%23\n" 
+		"add %%-1,%%78\n" 
+		"and %%45,%%42,42\n" "and %%42,%%42,%%42\n" 
+		"zjmp 12\n" 
+		"ldi %%42, 42, r1\n" "ldir %%42, r1, %%42\n" 
+		"sti r1, %%42, 42\n" "sti %%42, %%42, %%42\n" 
+		"fork r1\n" "fork 42\n" 
+		"lld r1, r2\n" 
+		"lldi %%42, 42, r1\n" 
+		"lfork 42\n" 
+		"aff %%42\n" )
+	mess=( "no separator between arguments" "wrong separator" 
+		"no end of line" 
+		"multiple instru per line" "no instruction" 
+		"wrong label sign" 
+		"live with reg" 
+		"st ind dir" 
+		"add dir dir" 
+		"and dir dir ind" "and dir dir dir" 
+		"zjmp ind" 
+		"ldi dir ind reg" "ldi dir reg dir" 
+		"sti reg dir ind" "sti dir dir dir" 
+		"fork reg" "fork ind" 
+		"lld reg reg" 
+		"lldi dir ind reg" 
+		"lfork ind" 
+		"aff dir" )
+	printf ""$BLUE"\nTesting invalid files\n\n"$RES"";
+	for i in `seq 0 21`
+	do
+		create_test_champ "${cmd[i]}";
+		check_diff_inv "$1" "${mess[i]}";
+	done
+}
+
 if [ ! -e ./asm_official ]
 then
 	printf "Need official asm exec for comparison\n"
@@ -81,4 +137,5 @@ then
 	exit
 fi
 check_valid $1;
+check_invalid $1;
 rm output_ours.cor output_of.cor test_champ.s
