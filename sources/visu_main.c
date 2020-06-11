@@ -134,8 +134,8 @@ int    init_visu(t_vm *vm)
 	init_color_arena(vm);
 	display_round(vm);
 	display_round(vm);
+	mvwprintw(vm->window->input, 1, 1, "Pause \t\t[SPACE]");
 	refresh_window(vm);
-	getch();
     return(0);
 }
 
@@ -195,7 +195,7 @@ void	aff_input(t_vm *vm)
 	size_t j;
 
 	j = 1;
-	mvwprintw(vm->window->input, j, 1, "Play/Pause \t\t[SPACE]");
+	mvwprintw(vm->window->input, j, 1, "Play \t\t[SPACE]");
     j += 2;
     mvwprintw(vm->window->input, j, 1, "Next Turn \t\t[c]");
     j += 2;
@@ -282,20 +282,24 @@ void	color_arena(t_vm *vm, t_cursor *cursor, unsigned long long pos)
 
 int		get_visu_input(t_vm *vm, int ch)
 {
-	nodelay(vm->window->memory, 1);
+	if (ch == 'c')
+	{
+		ch = getch();
+		if (ch != 'q')
+			return (ch);
+	}
 	if (ch == 'q')
 	{
 		system("clear");
 		exit(0);
 	}
-	if (ch != 'c') // verif quon est pas en mode cycle
-	{
+	nodelay(vm->window->memory, 1);
+	if (ch != 'c')
 		ch = wgetch(vm->window->memory);
-	}
-	if (ch == 'c') // avance cycle par cycle
-		ch = getch();
-	else if (ch == ' ') // play / pause
+	if (ch == ' ')
 	{
+		mvwprintw(vm->window->input, 1, 1, "Pause \t\t[SPACE]");
+		refresh_window(vm);
 		ch = wgetch(vm->window->memory);
 		while (ch != ' ' && ch != 'c' && ch != 'q')
 			ch = wgetch(vm->window->memory);

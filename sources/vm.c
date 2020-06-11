@@ -16,7 +16,8 @@ void	game_loop(t_vm *vm)
 {
 	int ch;
 
-	ch = ' ';
+	if (vm->visualiser == true)
+		ch = getch();
 	while (1)
 	{
 		if (vm->visualiser == true)
