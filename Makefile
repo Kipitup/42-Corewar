@@ -6,19 +6,22 @@
 #    By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 12:15:55 by ssfar             #+#    #+#              #
-#    Updated: 2020/05/24 20:11:27 by ssfar            ###   ########.fr        #
+#    Updated: 2020/06/11 18:51:42 by ssfar            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all, clean, fclean, re
 
 NAME = corewar
+NAME1 = asm
+NAME2 = revasm
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I $(INC_DIR) -I ./libft/includes
 
 INC_DIR = includes
-SRC_DIR = sources
+SRC_DIR = sources/virtual_machine
+SRC_DIR1 = sources/assembler_revassembler
 OBJ_DIR = objects
 
 SRC_NAME =	add_sub_fun.c \
@@ -39,24 +42,68 @@ SRC_NAME =	add_sub_fun.c \
 			vm.c \
 			visu_main.c \
 
+SRC_NAME1 =	dynamic_string.c\
+			errors_asm.c\
+			main_asm.c\
+			parser_asm.c\
+			util_asm.c\
+			header_asm.c\
+			delete_asm.c\
+			check_header.c\
+			instructs_asm.c\
+			get_instructs.c\
+			check_instructs.c\
+			struct_asm.c\
+			op.c\
+			line_asm.c
+
+SRC_NAME2 =	errors_revasm.c\
+			errors_asm.c\
+			main_revasm.c\
+			file_revasm.c\
+			parser_revasm.c\
+			struct_asm.c\
+			util_asm.c\
+			op.c
+
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_NAME))
+SRC1 = $(addprefix $(SRC_DIR1)/, $(SRC_NAME1))
+SRC2 = $(addprefix $(SRC_DIR1)/, $(SRC_NAME2))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_NAME:.c=.o))
+OBJ1 = $(addprefix $(OBJ_DIR)/, $(SRC_NAME1:.c=.o))
+OBJ2 = $(addprefix $(OBJ_DIR)/, $(SRC_NAME2:.c=.o))
 
 EOC			= \033[0;0m
 RED			= \033[0;31m
 GREEN		= \033[0;32m
 
-all: $(NAME)
+all: $(NAME) $(NAME1) $(NAME2)
 
 $(NAME): $(OBJ)
 	@make -C ./libft
 	@$(CC) $(CFLAGS) $(OBJ) -lncurses ./libft/libft.a -o $@
 	@chmod 755 $(NAME)
-	@printf "$(GREEN)$(NAME) Makefile : $(OBJ_DIR) and $(NAME) created\n$(EOC)"
+	@printf "$(GREEN)$(NAME) Makefile : $(NAME) created\n$(EOC)"
+
+$(NAME1): $(OBJ1)
+	@make -C ./libft
+	@$(CC) $(CFLAGS) $(OBJ1) ./libft/libft.a -o $@
+	@chmod 755 $(NAME1)
+	@printf "$(GREEN)$(NAME) Makefile : $(NAME1) created\n$(EOC)"
+
+$(NAME2): $(OBJ2)
+	@make -C ./libft
+	@$(CC) $(CFLAGS) $(OBJ2) ./libft/libft.a -o $@
+	@chmod 755 $(NAME2)
+	@printf "$(GREEN)$(NAME) Makefile : $(NAME2) created\n$(EOC)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -lncurses -c $< -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR1)/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@make -C ./libft fclean
@@ -64,7 +111,7 @@ clean:
 	@printf "$(RED)$(NAME) Makefile : $(OBJ_DIR) deleted\n$(EOC)"
 
 fclean: clean
-	@rm -f $(NAME)
-	@printf "$(RED)$(NAME) Makefile : $(NAME) deleted\n$(EOC)"
+	@rm -f $(NAME) $(NAME1) $(NAME2)
+	@printf "$(RED)$(NAME) Makefile : $(NAME), $(NAME1) and $(NAME2) deleted\n$(EOC)"
 
 re: fclean all

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadahan <sadahan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 16:56:53 by sadahan           #+#    #+#             */
-/*   Updated: 2020/06/10 18:01:44 by sadahan          ###   ########.fr       */
+/*   Updated: 2020/06/11 18:38:28 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include "op.h"
-# include "../libft/libft.h"
+# include "libft.h"
 # include <unistd.h>
 # include <sys/types.h>
 # include <sys/stat.h>
