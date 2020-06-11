@@ -149,6 +149,25 @@ void    refresh_window(t_vm *vm)
     refresh();
 }
 
+void	reset_light(t_vm *vm)
+{
+	size_t i;
+	size_t j;
+
+	j = 0;
+    while (j < 64)
+    {
+		i = 0;
+		while (i < 64)
+		{
+			if (vm->arena_color[i + j * 64] > vm->nb_player)
+				vm->arena_color[i + j * 64] -= vm->nb_player;
+			i++;
+		}
+		j++;
+    }
+}
+
 void	aff_memory(t_vm *vm)
 {
 	size_t i;
@@ -168,6 +187,7 @@ void	aff_memory(t_vm *vm)
 		j++;
     }
 	wrefresh(vm->window->memory);
+	reset_light(vm);
 }
 
 void	aff_input(t_vm *vm)
@@ -215,6 +235,7 @@ void	aff_champions(t_vm *vm)
     	j += 2;
     	mvwprintw(vm->window->champions, j, 1, "%s", vm->player[i].prog_name);
     	j += 4;
+		wattroff(vm->window->champions, COLOR_PAIR(i + 1 + vm->nb_player));
 		i++;
 	}
 }
@@ -228,7 +249,7 @@ void    display_round(t_vm *vm)
 	refresh_window(vm);
 }
 
-void	reset_light(t_vm *vm)
+void	print_tab(unsigned char *arena_color)
 {
 	size_t i;
 	size_t j;
@@ -239,10 +260,10 @@ void	reset_light(t_vm *vm)
 		i = 0;
 		while (i < 64)
 		{
-			if (vm->arena_color[i + j * 64] > vm->nb_player)
-				vm->arena_color[i + j * 64] -= vm->nb_player;
+			ft_printf("%d", arena_color[i + j * 64]);
 			i++;
 		}
+		ft_printf("\n");
 		j++;
     }
 }
@@ -252,11 +273,9 @@ void	color_arena(t_vm *vm, t_cursor *cursor, unsigned long long pos)
 	size_t i;
 
 	i = 0;
-	reset_light(vm);
-	// ft_printf("reg :%d, pc %d, id %d\n", cursor->reg[REG_NUMBER], cursor->pc, cursor->player_id);
-	while (i < 8)
+	while (i < 4)
 	{
-		vm->arena_color[pos % MEM_SIZE + i] = cursor->player_id + vm->nb_player;
+		vm->arena_color[(pos % MEM_SIZE) + i] = cursor->player_id + vm->nb_player;
 		i++;
 	}
 }
