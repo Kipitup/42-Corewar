@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instructs_asm.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sadahan <sadahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 16:54:54 by sadahan           #+#    #+#             */
-/*   Updated: 2020/06/11 18:32:41 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/13 09:51:47 by sadahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ t_inst			*fill_instructs(t_pos *p, t_inst *instructs, char *file)
 			if (!instructs)
 				return (error_asm("File must contain at least one "
 					"instruction\n", p->line, p->col));
-				break ;
+			break ;
 		}
 		if (!(new = read_instruct_line(file, p)))
 			return (delete_struct(&instructs));
