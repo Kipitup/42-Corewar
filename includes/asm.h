@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sadahan <sadahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 16:56:53 by sadahan           #+#    #+#             */
-/*   Updated: 2020/06/11 18:38:28 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/13 09:54:54 by sadahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define ERR_TYPE "Invalid syntax or agument type\n"
 # define ERR_VALUE "Invalid syntax or argument value\n"
 # define ERR_SEP "Too many arguments or separators\n"
+# define ERR_EMPTY "File must contain at least one instruction\n"
 
 /*
 ** used to check next char after instruction
