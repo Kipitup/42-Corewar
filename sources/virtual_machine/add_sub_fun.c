@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 18:09:13 by cbretagn          #+#    #+#             */
-/*   Updated: 2020/05/24 17:37:40 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/14 01:27:26 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_add(t_vm *vm, t_cursor *cur)
 {
-	unsigned char	arg[4];
+	unsigned char	arg[3];
 	int				value;
 
 	get_ocp(vm, cur->pc + 1, arg);
@@ -33,7 +33,7 @@ void	ft_add(t_vm *vm, t_cursor *cur)
 
 void	ft_sub(t_vm *vm, t_cursor *cur)
 {
-	unsigned char	arg[4];
+	unsigned char	arg[3];
 	int				value;
 
 	get_ocp(vm, cur->pc + 1, arg);
