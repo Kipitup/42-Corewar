@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors_revasm.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sadahan <sadahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 17:49:43 by user42            #+#    #+#             */
-/*   Updated: 2020/06/11 18:32:23 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/16 14:36:25 by sadahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ void		*error_read(t_header *header, char *s)
 	write(2, "Can't read source file\n", 23);
 	if (header)
 		free(header);
+	if (s)
+		ft_strdel(&s);
+	return (NULL);
+}
+
+void		*error_del(char *s)
+{
 	if (s)
 		ft_strdel(&s);
 	return (NULL);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_revasm.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sadahan <sadahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 19:10:30 by sadahan           #+#    #+#             */
-/*   Updated: 2020/06/11 18:32:27 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/16 14:37:06 by sadahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ char			*read_file(char *str, t_header *header)
 		return (NULL);
 	ret = read(fd, header, sizeof(t_header));
 	if (ret < sizeof(t_header))
-		return (error_read(header, code));
+		return (error_del(code));
 	if (reverse_bytes(header->magic) != COREWAR_EXEC_MAGIC)
-		return (error_read(header, code));
+		return (error_del(code));
 	size = reverse_bytes(header->prog_size) + 1;
 	if (!(code = ft_memalloc(sizeof(char) * size)))
 		error_malloc(-1);
 	ret = read(fd, code, size);
 	if (ret < size - 1)
-		return (error_read(header, code));
+		return (error_del(code));
 	close(fd);
 	return (code);
 }

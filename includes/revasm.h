@@ -6,7 +6,7 @@
 /*   By: sadahan <sadahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 16:56:53 by sadahan           #+#    #+#             */
-/*   Updated: 2020/06/10 17:39:21 by sadahan          ###   ########.fr       */
+/*   Updated: 2020/06/16 14:36:44 by sadahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct			s_revinst
 
 void					usage_revasm(int ac, char **av);
 void					*error_read(t_header *header, char *s);
+void					*error_del(char *s);
 
 char					*read_file(char *str, t_header *header);
 void					write_file(char *name, t_revinst **instructs,
