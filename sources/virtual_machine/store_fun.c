@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 14:58:01 by cbretagn          #+#    #+#             */
-/*   Updated: 2020/06/09 15:25:03 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/14 01:44:10 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_st(t_vm *vm, t_cursor *cur)
 {
-	unsigned char		arg[4];
+	unsigned char		arg[3];
 	unsigned int		value;
 	unsigned long long	pos;
 
@@ -38,7 +38,7 @@ void	ft_st(t_vm *vm, t_cursor *cur)
 
 void	ft_sti(t_vm *vm, t_cursor *cur)
 {
-	unsigned char		arg[4];
+	unsigned char		arg[3];
 	unsigned int		value;
 	int					pos[2];
 	unsigned long long	result;

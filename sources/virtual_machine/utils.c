@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 19:14:54 by ssfar             #+#    #+#             */
-/*   Updated: 2020/05/24 19:21:31 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/14 01:27:16 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 t_bool	check_one(unsigned char code, int allowed)
 {
-	if (allowed == 0 && code != 0)
-		return (false);
 	if (allowed == ALL && code == 0)
 		return (false);
 	if (allowed == REG_ONLY && code != REG_CODE)
@@ -36,7 +34,7 @@ t_bool	check_one(unsigned char code, int allowed)
 t_bool	check_param(unsigned char *arg, int p0, int p1, int p2)
 {
 	return (check_one(arg[0], p0) && check_one(arg[1], p1)
-		&& check_one(arg[2], p2) && check_one(arg[3], 0));
+		&& check_one(arg[2], p2));
 }
 
 int		jump(unsigned char *arg, t_bool big_dir)
@@ -71,6 +69,4 @@ void	get_ocp(t_vm *vm, unsigned long long pos, unsigned char *tab)
 	tmp = ocp & 12;
 	tmp = tmp >> 2;
 	tab[2] = tmp;
-	tmp = ocp & 3;
-	tab[3] = tmp;
 }

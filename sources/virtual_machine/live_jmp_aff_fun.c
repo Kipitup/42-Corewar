@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   live_jmp_aff_fun.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbretagn <cbretagn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 19:20:43 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/04 17:33:53 by cbretagn         ###   ########.fr       */
+/*   Updated: 2020/06/14 01:40:53 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_zjmp(t_vm *vm, t_cursor *cur)
 
 void	ft_aff(t_vm *vm, t_cursor *cur)
 {
-	unsigned char	arg[4];
+	unsigned char	arg[3];
 
 	get_ocp(vm, cur->pc + 1, arg);
 	if (check_param(arg, REG_ONLY, 0, 0)

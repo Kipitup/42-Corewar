@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ld_fun.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbretagn <cbretagn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 17:39:49 by cbretagn          #+#    #+#             */
-/*   Updated: 2020/06/04 17:26:50 by cbretagn         ###   ########.fr       */
+/*   Updated: 2020/06/14 01:38:43 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_ld(t_vm *vm, t_cursor *cur)
 {
-	unsigned char	arg[4];
+	unsigned char	arg[3];
 	unsigned int	value;
 
 	get_ocp(vm, cur->pc + 1, arg);
@@ -35,7 +35,7 @@ void	ft_ld(t_vm *vm, t_cursor *cur)
 
 void	ft_lld(t_vm *vm, t_cursor *cur)
 {
-	unsigned char	arg[4];
+	unsigned char	arg[3];
 	unsigned int	value;
 
 	get_ocp(vm, cur->pc + 1, arg);
@@ -56,7 +56,7 @@ void	ft_lld(t_vm *vm, t_cursor *cur)
 
 void	ft_ldi(t_vm *vm, t_cursor *cur)
 {
-	unsigned char	arg[4];
+	unsigned char	arg[3];
 	int	val;
 
 	get_ocp(vm, cur->pc + 1, arg);
@@ -85,7 +85,7 @@ void	ft_ldi(t_vm *vm, t_cursor *cur)
 
 void	ft_lldi(t_vm *vm, t_cursor *cur)
 {
-	unsigned char	arg[4];
+	unsigned char	arg[3];
 	int	val;
 
 	get_ocp(vm, cur->pc + 1, arg);
