@@ -96,7 +96,7 @@ void	ft_lldi(t_vm *vm, t_cursor *cur)
 		else if (arg[0] == DIR_CODE)
 			val = (short)lget_mem(vm, cur->pc, 2, 2);
 		else
-			val = lget_mem(vm, cur->pc, (short)lget_mem(vm, cur->pc, 2, 2), 4);
+			val = get_mem(vm, cur->pc, (short)get_mem(vm, cur->pc, 2, 2) % IDX_MOD, 4);
 		if (arg[1] == REG_CODE)
 			val += get_reg(vm, cur, cur->pc + 2 + arg_size(arg[0], false));
 		else
