@@ -137,17 +137,18 @@ void			ft_or(t_vm *vm, t_cursor *cur);
 void			ft_xor(t_vm *vm, t_cursor *cur);
 void			ft_fork(t_vm *vm, t_cursor *cur);
 void			ft_lfork(t_vm *vm, t_cursor *cur);
-unsigned int	get_mem(t_vm *vm, unsigned long long pos, int size);
+unsigned int	get_mem(t_vm *vm, unsigned long long pc, unsigned long long pos,
+	int size);
 void			ft_ld(t_vm *vm, t_cursor *cur);
 void			ft_lld(t_vm *vm, t_cursor *cur);
 void			ft_ldi(t_vm *vm, t_cursor *cur);
 void			ft_lldi(t_vm *vm, t_cursor *cur);
 void			ft_zjmp(t_vm *vm, t_cursor *cur);
 void			ft_aff(t_vm *vm, t_cursor *cur);
-void			write_int(t_vm *vm, unsigned int value, unsigned long long pos);
-void			write_h(t_vm *vm, unsigned short value, unsigned long long pos);
-unsigned int	read_h(t_vm *vm, unsigned long long pos);
-unsigned int	read_int(t_vm *vm, unsigned long long pos);
+void	write_int(t_vm *vm, unsigned int value, unsigned long long pc,
+	unsigned long long pos);
+unsigned int	read_int(t_vm *vm, unsigned long long pc,
+	unsigned long long pos);
 void			ft_st(t_vm *vm, t_cursor *cur);
 void			ft_sti(t_vm *vm, t_cursor *cur);
 t_bool			is_reg(unsigned char reg);
@@ -160,6 +161,11 @@ unsigned int	get_reg(t_vm *vm, t_cursor *cur, unsigned long long pos);
 void			cpy_to_reg(unsigned int *reg, unsigned int value);
 t_bool			check_3reg(t_vm *vm, t_cursor *cur, unsigned char *arg,
 					t_bool big_dir);
+unsigned int	lget_mem(t_vm *vm, unsigned long long pc,
+	unsigned long long pos, int size);
+unsigned int	lread_int(t_vm *vm, unsigned long long pc,
+	unsigned long long pos);
+unsigned int	lread_h(t_vm *vm, unsigned long long pc, unsigned long long pos);
 
 t_window		*init_window(void);
 int				init_visu(t_vm *vm);

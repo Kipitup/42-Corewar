@@ -6,7 +6,7 @@
 #    By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 12:15:55 by ssfar             #+#    #+#              #
-#    Updated: 2020/06/11 18:51:42 by ssfar            ###   ########.fr        #
+#    Updated: 2020/06/17 03:03:52 by ssfar            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC_NAME =	add_sub_fun.c \
 			fork_fun.c \
 			get_value.c \
 			ld_fun.c \
+			lget_value.c \
 			live_jmp_aff_fun.c \
 			load.c \
 			main.c \

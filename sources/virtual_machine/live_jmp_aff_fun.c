@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 19:20:43 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/14 01:40:53 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/17 02:54:21 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_live(t_vm *vm, t_cursor *cur)
 {
 	int	live_id;
 
-	live_id = get_mem(vm, cur->pc + 1, 4);
+	live_id = get_mem(vm, cur->pc, 1, 4);
 	cur->pc = (cur->pc + 5) % MEM_SIZE;
 	cur->live = true;
 	if (-live_id > 0 && -live_id <= vm->nb_player)
@@ -41,7 +41,7 @@ void	ft_zjmp(t_vm *vm, t_cursor *cur)
 		cur->pc = (cur->pc + 3) % MEM_SIZE;
 	else
 	{
-		jump = get_mem(vm, cur->pc + 1, 2);
+		jump = get_mem(vm, cur->pc, 1, 2);
 		cur->pc = (cur->pc + jump % IDX_MOD) % MEM_SIZE;
 	}
 }

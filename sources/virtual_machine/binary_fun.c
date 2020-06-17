@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:11:29 by cbretagn          #+#    #+#             */
-/*   Updated: 2020/06/14 01:28:34 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/17 02:48:10 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,17 @@ void	ft_and(t_vm *vm, t_cursor *cur)
 		if (arg[0] == REG_CODE)
 			val = cur->reg[vm->arena[(cur->pc + 2) % MEM_SIZE] - 1];
 		else if (arg[0] == DIR_CODE)
-			val = read_int(vm, cur->pc + 2);
+			val = read_int(vm, cur->pc, 2);
 		else
-			val = read_int(vm, cur->pc + (short)get_mem(vm, cur->pc + 2, 2)
-				% IDX_MOD);
+			val = read_int(vm, cur->pc, (short)get_mem(vm, cur->pc, 2, 2));
 		if (arg[1] == REG_CODE)
 			val &= cur->reg[vm->arena[(cur->pc + 2 + arg_size(arg[0], true))
 				% MEM_SIZE] - 1];
 		else if (arg[1] == DIR_CODE)
-			val &= read_int(vm, cur->pc + 2 + arg_size(arg[0], true));
+			val &= read_int(vm, cur->pc, 2 + arg_size(arg[0], true));
 		else
-			val &= read_int(vm, cur->pc + (short)get_mem(vm, cur->pc + 2
-				+ arg_size(arg[0], true), 2) % IDX_MOD);
+			val &= read_int(vm, cur->pc, (short)get_mem(vm, cur->pc, 2
+				+ arg_size(arg[0], true), 2));
 		cur->reg[vm->arena[(cur->pc + 1 + jump(arg, 1)) % MEM_SIZE] - 1] = val;
 		cur->carry = val ? 0 : 1;
 	}
@@ -52,18 +51,17 @@ void	ft_or(t_vm *vm, t_cursor *cur)
 		if (arg[0] == REG_CODE)
 			val = cur->reg[vm->arena[(cur->pc + 2) % MEM_SIZE] - 1];
 		else if (arg[0] == DIR_CODE)
-			val = read_int(vm, cur->pc + 2);
+			val = read_int(vm, cur->pc, 2);
 		else
-			val = read_int(vm, cur->pc + (short)get_mem(vm, cur->pc + 2, 2)
-				% IDX_MOD);
+			val = read_int(vm, cur->pc, (short)get_mem(vm, cur->pc, 2, 2));
 		if (arg[1] == REG_CODE)
 			val |= cur->reg[vm->arena[(cur->pc + 2 + arg_size(arg[0], true))
 				% MEM_SIZE] - 1];
 		else if (arg[1] == DIR_CODE)
-			val |= read_int(vm, cur->pc + 2 + arg_size(arg[0], true));
+			val |= read_int(vm, cur->pc, 2 + arg_size(arg[0], true));
 		else
-			val |= read_int(vm, cur->pc + (short)get_mem(vm, cur->pc + 2
-				+ arg_size(arg[0], true), 2) % IDX_MOD);
+			val |= read_int(vm, cur->pc, (short)get_mem(vm, cur->pc, 2
+				+ arg_size(arg[0], true), 2));
 		cur->reg[vm->arena[(cur->pc + 1 + jump(arg, 1)) % MEM_SIZE] - 1] = val;
 		cur->carry = val ? 0 : 1;
 	}
@@ -81,18 +79,17 @@ void	ft_xor(t_vm *vm, t_cursor *cur)
 		if (arg[0] == REG_CODE)
 			val = cur->reg[vm->arena[(cur->pc + 2) % MEM_SIZE] - 1];
 		else if (arg[0] == DIR_CODE)
-			val = read_int(vm, cur->pc + 2);
+			val = read_int(vm, cur->pc, 2);
 		else
-			val = read_int(vm, cur->pc + (short)get_mem(vm, cur->pc + 2, 2)
-				% IDX_MOD);
+			val = read_int(vm, cur->pc, (short)get_mem(vm, cur->pc, 2, 2));
 		if (arg[1] == REG_CODE)
 			val ^= cur->reg[vm->arena[(cur->pc + 2 + arg_size(arg[0], true))
 				% MEM_SIZE] - 1];
 		else if (arg[1] == DIR_CODE)
-			val ^= read_int(vm, cur->pc + 2 + arg_size(arg[0], true));
+			val ^= read_int(vm, cur->pc, 2 + arg_size(arg[0], true));
 		else
-			val ^= read_int(vm, cur->pc + (short)get_mem(vm, cur->pc + 2
-				+ arg_size(arg[0], true), 2) % IDX_MOD);
+			val ^= read_int(vm, cur->pc, (short)get_mem(vm, cur->pc, 2
+				+ arg_size(arg[0], true), 2));
 		cur->reg[vm->arena[(cur->pc + 1 + jump(arg, 1)) % MEM_SIZE] - 1] = val;
 		cur->carry = val ? 0 : 1;
 	}

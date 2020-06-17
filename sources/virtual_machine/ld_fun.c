@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 17:39:49 by cbretagn          #+#    #+#             */
-/*   Updated: 2020/06/14 01:38:43 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/17 03:05:07 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@ void	ft_ld(t_vm *vm, t_cursor *cur)
 		&& is_reg(vm->arena[(cur->pc + 2 + arg_size(arg[0], true)) % MEM_SIZE]))
 	{
 		if (arg[0] == DIR_CODE)
-			value = read_int(vm, cur->pc + 2);
+			value = read_int(vm, cur->pc, 2);
 		else
-			value = read_int(vm, cur->pc
-				+ (short)get_mem(vm, cur->pc + 2, 2) % IDX_MOD);
+			value = read_int(vm, cur->pc, (short)get_mem(vm, cur->pc, 2, 2));
 		cur->reg[vm->arena[(cur->pc + 2 + arg_size(arg[0], true))
 			% MEM_SIZE] - 1] = value;
 		cur->carry = value ? 0 : 1;
@@ -43,10 +42,9 @@ void	ft_lld(t_vm *vm, t_cursor *cur)
 		&& is_reg(vm->arena[(cur->pc + 2 + arg_size(arg[0], true)) % MEM_SIZE]))
 	{
 		if (arg[0] == DIR_CODE)
-			value = read_int(vm, cur->pc + 2);
+			value = lread_int(vm, cur->pc, 2);
 		else
-			value = read_h(vm, cur->pc
-				+ (short)get_mem(vm, cur->pc + 2, 2));
+			value = lread_h(vm, cur->pc, (short)lget_mem(vm, cur->pc, 2, 2));
 		cur->reg[vm->arena[(cur->pc + 2 + arg_size(arg[0], true))
 			% MEM_SIZE] - 1] = value;
 		cur->carry = value ? 0 : 1;
@@ -68,15 +66,14 @@ void	ft_ldi(t_vm *vm, t_cursor *cur)
 		if (arg[0] == REG_CODE)
 			val = get_reg(vm, cur, cur->pc + 2);
 		else if (arg[0] == DIR_CODE)
-			val = (short)get_mem(vm, cur->pc + 2, 2);
+			val = (short)get_mem(vm, cur->pc, 2, 2);
 		else
-			val = get_mem(vm, cur->pc + (short)get_mem(vm, cur->pc + 2, 2)
-				% IDX_MOD, 4);
+			val = get_mem(vm, cur->pc, (short)get_mem(vm, cur->pc, 2, 2), 4);
 		if (arg[1] == REG_CODE)
 			val += get_reg(vm, cur, cur->pc + 2 + arg_size(arg[0], false));
 		else
-			val += (short)get_mem(vm, cur->pc + 2 + arg_size(arg[0], 0), 2);
-		val = read_int(vm, cur->pc + val % IDX_MOD);
+			val += (short)get_mem(vm, cur->pc, 2 + arg_size(arg[0], 0), 2);
+		val = read_int(vm, cur->pc, val);
 		cur->reg[vm->arena[(cur->pc + 1 + jump(arg, 0)) % MEM_SIZE] - 1] = val;
 		cur->carry = val ? 0 : 1;
 	}
@@ -97,14 +94,14 @@ void	ft_lldi(t_vm *vm, t_cursor *cur)
 		if (arg[0] == REG_CODE)
 			val = get_reg(vm, cur, cur->pc + 2);
 		else if (arg[0] == DIR_CODE)
-			val = (short)get_mem(vm, cur->pc + 2, 2);
+			val = (short)lget_mem(vm, cur->pc, 2, 2);
 		else
-			val = get_mem(vm, cur->pc + (short)get_mem(vm, cur->pc + 2, 2), 4);
+			val = lget_mem(vm, cur->pc, (short)lget_mem(vm, cur->pc, 2, 2), 4);
 		if (arg[1] == REG_CODE)
 			val += get_reg(vm, cur, cur->pc + 2 + arg_size(arg[0], false));
 		else
-			val += (short)get_mem(vm, cur->pc + 2 + arg_size(arg[0], 0), 2);
-		val = read_int(vm, cur->pc + val);
+			val += (short)lget_mem(vm, cur->pc, 2 + arg_size(arg[0], 0), 2);
+		val = lread_int(vm, cur->pc, val);
 		cur->reg[vm->arena[(cur->pc + 2 + arg_size(arg[0], false)
 			+ arg_size(arg[1], false)) % MEM_SIZE] - 1] = val;
 		cur->carry = val ? 0 : 1;
