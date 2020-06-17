@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+         #
+#    By: vrobin <vrobin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 12:15:55 by ssfar             #+#    #+#              #
-#    Updated: 2020/06/17 03:03:52 by ssfar            ###   ########.fr        #
+#    Updated: 2020/06/17 22:06:22 by vrobin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,9 @@ SRC_NAME =	add_sub_fun.c \
 			utils.c \
 			vm.c \
 			visu_main.c \
+			visu_aff.c \
+			visu_init.c \
+			visu_color.c \
 
 SRC_NAME1 =	dynamic_string.c\
 			errors_asm.c\
