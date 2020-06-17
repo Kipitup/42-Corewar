@@ -56,9 +56,17 @@ unsigned int	lread_h(t_vm *vm, unsigned long long pc, long long pos)
 	unsigned char	*p;
 
 	p = (unsigned char *)&ret;
-	p[0] = 0;
-	p[1] = 0;
 	p[2] = vm->arena[(pc + pos) % MEM_SIZE];
 	p[3] = vm->arena[(pc + pos + 1) % MEM_SIZE];
+	if (p[2] > 127)
+	{
+		p[0] = 255;
+		p[1] = 255;
+	}
+	else
+	{
+		p[0] = 0;
+		p[1] = 0;
+	}
 	return (ret);
 }
