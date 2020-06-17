@@ -102,6 +102,7 @@ typedef struct		s_vm
 */
 
 void			create_new_cursor(t_vm *vm, t_cursor *parent);
+void			free_cursor_list(t_vm *vm);
 void			read_player_file(t_vm *vm);
 void			check_file(t_vm *vm, int fd, int i);
 void			check_for_null_bytes(t_vm *vm, int fd, unsigned int i);

@@ -34,6 +34,8 @@ void	corewar_vm(int ac, char **av)
 		init_visu(&vm);
 	game_loop(&vm);
 	print_winner(&vm);
+	free(vm.player);
+	free_cursor_list(&vm);
 }
 
 void	init(int ac, char **av, t_vm *vm)

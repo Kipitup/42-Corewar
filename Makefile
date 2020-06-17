@@ -16,7 +16,7 @@ NAME = corewar
 NAME1 = asm
 NAME2 = revasm
 
-CC = gcc
+CC = clang
 CFLAGS = -Wall -Wextra -Werror -I $(INC_DIR) -I ./libft/includes
 
 INC_DIR = includes
