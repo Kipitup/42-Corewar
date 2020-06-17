@@ -14,27 +14,28 @@
 
 int	main(int ac, char **av)
 {
-	t_vm	vm;
-
-	corewar_vm(ac, av, &vm);
-	exit(0);
+	corewar_vm(ac, av);
 }
 
-void	corewar_vm(int ac, char **av, t_vm *vm)
+void	corewar_vm(int ac, char **av)
 {
+	t_vm	vm;
+
 	if (ac < 2)
 		exit_failure("Usage : ./corewar "
 		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
-	init(ac, av, vm);
-	parsing(ac, av, vm);
-	complete_player_id(ac, av, vm);
-	ft_bzero(vm->arena, MEM_SIZE);
-	read_player_file(vm);
-	print_player(vm);
-	if (vm->visualiser == true)
-		init_visu(vm);
-	game_loop(vm);
-	print_winner(vm);
+	init(ac, av, &vm);
+	parsing(ac, av, &vm);
+	complete_player_id(ac, av, &vm);
+	ft_bzero(vm.arena, MEM_SIZE);
+	read_player_file(&vm);
+	print_player(&vm);
+	if (vm.visualiser == true)
+		init_visu(&vm);
+	game_loop(&vm);
+	print_winner(&vm);
+	free(vm.player);
+	free_cursor_list(&vm);
 }
 
 void	init(int ac, char **av, t_vm *vm)

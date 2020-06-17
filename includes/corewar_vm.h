@@ -102,11 +102,12 @@ typedef struct		s_vm
 */
 
 void			create_new_cursor(t_vm *vm, t_cursor *parent);
+void			free_cursor_list(t_vm *vm);
 void			read_player_file(t_vm *vm);
 void			check_file(t_vm *vm, int fd, int i);
 void			check_for_null_bytes(t_vm *vm, int fd, unsigned int i);
 void			u_big_endian_to_u(unsigned int *big_endian);
-void			corewar_vm(int ac, char **av, t_vm *vm);
+void			corewar_vm(int ac, char **av);
 void			init(int ac, char **av, t_vm *vm);
 void			complete_player_id(int ac, char **av, t_vm *vm);
 void			exit_failure(char *error_message, char *file,
