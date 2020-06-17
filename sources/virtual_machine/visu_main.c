@@ -208,19 +208,19 @@ void	aff_info(t_vm *vm)
 	size_t	j;
 
 	j = 1;
-	mvwprintw(vm->window->info1, j, 1, "						");
-	mvwprintw(vm->window->info1, j, 1, "Cycle: %d", vm->cycle_counter);
+	// mvwprintw(vm->window->info1, j, 1, "						");
+	mvwprintw(vm->window->info1, j, 1, "Cycle:\t\t\t%d\t", vm->cycle_counter);
     j += 2;
-    mvwprintw(vm->window->info1, j, 1, "Players: %d", vm->nb_player);
+    mvwprintw(vm->window->info1, j, 1, "Players:\t\t%d", vm->nb_player);
     j += 2;
-    mvwprintw(vm->window->info1, j, 1, "Last alive: Player %d", -1 * vm->last_reported_alive);
+    mvwprintw(vm->window->info1, j, 1, "Last alive:\t\tPlayer %d", -1 * vm->last_reported_alive);
     j = 1;
-    mvwprintw(vm->window->info2, j, 1, "Cycle to die: %d", vm->cycle_to_die);
+    mvwprintw(vm->window->info2, j, 1, "Cycle to die:\t\t%d\t", vm->cycle_to_die);
     j += 2;
-    mvwprintw(vm->window->info2, j, 1, "Checks: %d", vm->check_counter);
+    mvwprintw(vm->window->info2, j, 1, "Checks:\t\t%d\t", vm->check_counter);
     j += 2;
-	mvwprintw(vm->window->info2, j, 1, "			");
-    mvwprintw(vm->window->info2, j, 1, "Lives: %d", vm->live_counter);
+	// mvwprintw(vm->window->info2, j, 1, "			");
+    mvwprintw(vm->window->info2, j, 1, "Lives:\t\t\t%d\t", vm->live_counter);
 }
 
 void	aff_champions(t_vm *vm)
@@ -233,7 +233,7 @@ void	aff_champions(t_vm *vm)
 	while (i < vm->nb_player)
 	{
 		wattron(vm->window->champions, COLOR_PAIR(i + 1 + vm->nb_player));
-    	mvwprintw(vm->window->champions, j, 1, "Player %d :", i + 1);
+    	mvwprintw(vm->window->champions, j, 1, "Player %d:", i + 1);
     	j += 2;
     	mvwprintw(vm->window->champions, j, 1, "%s", vm->player[i].prog_name);
     	j += 4;
