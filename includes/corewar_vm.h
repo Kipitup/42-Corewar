@@ -167,7 +167,7 @@ unsigned int	lread_int(t_vm *vm, unsigned long long pc,
 	long long pos);
 unsigned int	lread_h(t_vm *vm, unsigned long long pc, long long pos);
 
-t_window		*init_window(void);
+t_window		*init_window(t_window *window);
 int				init_visu(t_vm *vm);
 void			display_round(t_vm *vm);
 void			refresh_window(t_vm *vm);
@@ -177,5 +177,6 @@ void			aff_champions(t_vm *vm);
 void			display_round(t_vm *vm);
 void			color_arena(t_vm *vm, t_cursor *cursor, unsigned long long pos);
 int				get_visu_input(t_vm *vm, int ch);
+void			free_visu(t_vm *vm);
 
 #endif

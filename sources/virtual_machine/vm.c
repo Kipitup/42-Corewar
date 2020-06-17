@@ -35,7 +35,8 @@ void	game_loop(t_vm *vm)
 		vm->cycle_counter++;
 	}
 	if (vm->visualiser == true)
-		endwin();
+		free_visu(vm);
+		
 }
 
 void	check(t_vm *vm, t_cursor *cur, t_cursor *prev)

@@ -1,13 +1,12 @@
 #include "corewar_vm.h"
 
-t_window    *init_window(void)
+t_window    *init_window(t_window *window)
 {
-    t_window *window;
-    WINDOW   *memory;
-    WINDOW   *info1;
-    WINDOW   *info2;
-    WINDOW   *champions;
-    WINDOW   *input;
+    WINDOW		*memory;
+    WINDOW		*info1;
+    WINDOW		*info2;
+    WINDOW		*champions;
+    WINDOW		*input;
 
     memory = NULL;
     info1 = NULL;
@@ -25,9 +24,9 @@ t_window    *init_window(void)
 
 void	color_player(t_vm *vm, size_t act_player, size_t size, size_t nb_player)
 {
-	int i;
-	size_t j;
-	size_t start;
+	int		i;
+	size_t	j;
+	size_t	start;
 
 	i = 0;
 	j = 0;
@@ -51,7 +50,7 @@ void	color_player(t_vm *vm, size_t act_player, size_t size, size_t nb_player)
 
 void	pair_colors(t_vm *vm)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	init_pair(i, COLOR_GREEN, COLOR_BLACK);
@@ -87,7 +86,7 @@ void	pair_colors(t_vm *vm)
 
 void	init_color_arena(t_vm *vm)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	init_pair(0, COLOR_WHITE, COLOR_BLACK);
@@ -107,10 +106,11 @@ void	init_color_arena(t_vm *vm)
 
 int    init_visu(t_vm *vm)
 {
-	size_t ymax;
-	size_t xmax;
-	size_t y;
-	size_t x;
+	size_t		ymax;
+	size_t		xmax;
+	size_t		y;
+	size_t		x;
+    t_window	*window;
 
     initscr(); // start ncurses
 	start_color();
@@ -123,9 +123,10 @@ int    init_visu(t_vm *vm)
         ft_printf("ERROR, SCREEN TO SHORT, ZOOM OUT\n");
         exit(-1);
     }
+	window = NULL;
     y = ymax;
 	x = 192;
-    vm->window = init_window();
+    vm->window = init_window(window);
     vm->window->memory = newwin(y + 1, x + 1, 0, 0);
     vm->window->info1 = newwin(9, 75, 0, xmax - 75);
     vm->window->champions = newwin(50 - 12.5, 75, 9, xmax - 75);
@@ -134,7 +135,7 @@ int    init_visu(t_vm *vm)
 	init_color_arena(vm);
 	display_round(vm);
 	display_round(vm);
-	mvwprintw(vm->window->input, 1, 1, "Pause \t\t[SPACE]");
+	mvwprintw(vm->window->input, 1, 1, "Pause \t\t\t[SPACE]");
 	refresh_window(vm);
     return(0);
 }
@@ -151,8 +152,8 @@ void    refresh_window(t_vm *vm)
 
 void	reset_light(t_vm *vm)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	j = 0;
     while (j < 64)
@@ -170,8 +171,8 @@ void	reset_light(t_vm *vm)
 
 void	aff_memory(t_vm *vm)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	j = 0;
     while (j < 64)
@@ -192,10 +193,10 @@ void	aff_memory(t_vm *vm)
 
 void	aff_input(t_vm *vm)
 {
-	size_t j;
+	size_t	j;
 
 	j = 1;
-	mvwprintw(vm->window->input, j, 1, "Play \t\t[SPACE]");
+	mvwprintw(vm->window->input, j, 1, "Play \t\t\t[SPACE]");
     j += 2;
     mvwprintw(vm->window->input, j, 1, "Next Turn \t\t[c]");
     j += 2;
@@ -204,9 +205,10 @@ void	aff_input(t_vm *vm)
 
 void	aff_info(t_vm *vm)
 {
-	size_t j;
+	size_t	j;
 
 	j = 1;
+	mvwprintw(vm->window->info1, j, 1, "						");
 	mvwprintw(vm->window->info1, j, 1, "Cycle: %d", vm->cycle_counter);
     j += 2;
     mvwprintw(vm->window->info1, j, 1, "Players: %d", vm->nb_player);
@@ -217,15 +219,15 @@ void	aff_info(t_vm *vm)
     j += 2;
     mvwprintw(vm->window->info2, j, 1, "Checks: %d", vm->check_counter);
     j += 2;
-    mvwprintw(vm->window->info2, j, 1, "Lives", vm->check_counter);
+	mvwprintw(vm->window->info2, j, 1, "			");
+    mvwprintw(vm->window->info2, j, 1, "Lives: %d", vm->live_counter);
 }
 
 void	aff_champions(t_vm *vm)
 {
-	int i;
-	size_t j;
-	
-	
+	int		i;
+	size_t	j;
+
 	i = 0;
 	j = 1;
 	while (i < vm->nb_player)
@@ -251,8 +253,8 @@ void    display_round(t_vm *vm)
 
 void	print_tab(unsigned char *arena_color)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	j = 0;
     while (j < 64)
@@ -270,7 +272,7 @@ void	print_tab(unsigned char *arena_color)
 
 void	color_arena(t_vm *vm, t_cursor *cursor, unsigned long long pos)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < 4)
@@ -298,11 +300,17 @@ int		get_visu_input(t_vm *vm, int ch)
 		ch = wgetch(vm->window->memory);
 	if (ch == ' ')
 	{
-		mvwprintw(vm->window->input, 1, 1, "Pause \t\t[SPACE]");
+		mvwprintw(vm->window->input, 1, 1, "Pause \t\t\t[SPACE]");
 		refresh_window(vm);
 		ch = wgetch(vm->window->memory);
 		while (ch != ' ' && ch != 'c' && ch != 'q')
 			ch = wgetch(vm->window->memory);
 	}
 	return (ch);
+}
+
+void	free_visu(t_vm *vm)
+{
+	free(vm->window);
+	endwin();
 }
