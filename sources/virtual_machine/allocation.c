@@ -31,18 +31,3 @@ void	create_new_cursor(t_vm *vm, t_cursor *parent)
 	new_cursor->next = vm->cursor;
 	vm->cursor = new_cursor;
 }
-
-void	free_cursor_list(t_vm *vm)
-{
-	t_cursor	*tmp;
-	t_cursor	*del;
-
-	tmp = vm->cursor;
-	while (tmp != NULL)
-	{
-		del = tmp;
-		tmp = tmp->next;
-		free(del);
-		del = NULL;
-	}
-}
