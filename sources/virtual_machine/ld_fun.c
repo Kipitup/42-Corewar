@@ -75,7 +75,6 @@ void	ft_ldi(t_vm *vm, t_cursor *cur)
 			val += (short)get_mem(vm, cur->pc, 2 + arg_size(arg[0], 0), 2);
 		val = read_int(vm, cur->pc, val);
 		cur->reg[vm->arena[(cur->pc + 1 + jump(arg, 0)) % MEM_SIZE] - 1] = val;
-		cur->carry = val ? 0 : 1;
 	}
 	cur->pc = (cur->pc + 2 + jump(arg, false)) % MEM_SIZE;
 }
