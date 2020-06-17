@@ -13,7 +13,7 @@
 #include "corewar_vm.h"
 
 unsigned int	lget_mem(t_vm *vm, unsigned long long pc,
-	unsigned long long pos, int size)
+	long long pos, int size)
 {
 	unsigned int	ret;
 	unsigned int	mult;
@@ -33,7 +33,7 @@ unsigned int	lget_mem(t_vm *vm, unsigned long long pc,
 */
 
 unsigned int	lread_int(t_vm *vm, unsigned long long pc,
-	unsigned long long pos)
+	long long pos)
 {
 	unsigned int	ret;
 	int		i;
@@ -50,7 +50,7 @@ unsigned int	lread_int(t_vm *vm, unsigned long long pc,
 	return (ret);
 }
 
-unsigned int	lread_h(t_vm *vm, unsigned long long pc, unsigned long long pos)
+unsigned int	lread_h(t_vm *vm, unsigned long long pc, long long pos)
 {
 	unsigned int	ret;
 	unsigned char	*p;

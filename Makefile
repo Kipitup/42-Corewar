@@ -100,7 +100,7 @@ $(NAME2): $(OBJ2)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -lncurses -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR1)/%.c
 	@mkdir -p $(dir $@)
