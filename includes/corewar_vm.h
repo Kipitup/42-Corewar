@@ -179,5 +179,8 @@ void			display_round(t_vm *vm);
 void			color_arena(t_vm *vm, t_cursor *cursor, unsigned long long pos);
 int				get_visu_input(t_vm *vm, int ch);
 void			free_visu(t_vm *vm);
-
+void			reset_light(t_vm *vm);
+void			pair_colors(t_vm *vm);
+void			color_player(t_vm *vm, size_t act_player,
+	size_t size, size_t nb_player);
 #endif
