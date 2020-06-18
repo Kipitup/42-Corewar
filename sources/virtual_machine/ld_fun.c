@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 17:39:49 by cbretagn          #+#    #+#             */
-/*   Updated: 2020/06/18 02:14:49 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 12:53:07 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_lld(t_vm *vm, t_cursor *cur)
 		if (arg[0] == DIR_CODE)
 			value = lread_int(vm, cur->pc, 2);
 		else
-			value = lread_h(vm, cur->pc, (short)lget_mem(vm, cur->pc, 2, 2));
+			value = lread_int(vm, cur->pc, (short)lget_mem(vm, cur->pc, 2, 2));
 		cur->reg[vm->arena[(cur->pc + 2 + arg_size(arg[0], true))
 			% MEM_SIZE] - 1] = value;
 		cur->carry = value ? 0 : 1;
