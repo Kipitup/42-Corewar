@@ -34,7 +34,6 @@ void	create_new_cursor(t_vm *vm, t_cursor *parent)
 
 void	free_all(t_vm *vm)
 {
-
 	free(vm->player);
 	free(vm->window);
 	free_cursor_list(vm);
