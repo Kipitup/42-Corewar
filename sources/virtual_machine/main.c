@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 13:27:02 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 16:16:35 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 16:57:29 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	corewar_vm(int ac, char **av)
 	vm.cursor = NULL;
 	vm.player = NULL;
 	vm.window = NULL;
+	vm.nb_player = 0;
 	if (ac < 2)
 		exit_failure(&vm, "Usage : ./corewar "
 		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);

@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 02:33:41 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 15:41:48 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 17:05:41 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,16 @@ void	create_new_cursor(t_vm *vm, t_cursor *parent)
 
 void	free_all(t_vm *vm)
 {
-	free_cursor_list(vm);
-	free(vm->player);
+	long long	i;
+
+	i = 0;
+	while (i < vm->nb_player)
+	{
+		free(&vm->player[i]);
+		i++;
+	}
 	free(vm->window);
+	free_cursor_list(vm);
 }
 
 void	free_cursor_list(t_vm *vm)

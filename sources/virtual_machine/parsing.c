@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 15:56:23 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 16:17:28 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 16:57:17 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	count_player(int ac, char **av, t_vm *vm)
 {
 	int	i;
 
-	vm->nb_player = 0;
 	i = 1;
 	while (i < ac)
 	{
