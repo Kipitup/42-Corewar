@@ -82,14 +82,14 @@ st_fun ()
 ld_fun ()
 {
         cmd=( "ld %%15263, r2\nst r2, 5\n" "ld 0, r3\nst r3, 50\n" "st r1, 511\nst r1, 511\nld 512, r4\nst r4, 50\n" "ld %%0, r5\nzjmp %%10\nst r1, 5\n" 
-		"lld %%4578, r2\nst r2, 5\n" "lld 2048, r3\nst r3, 27\n" "lld %%0, r5\nzjmp %%10\nst r1, 5\n" 
+		"lld %%4578, r2\nst r2, 5\n" "lld %%0, r5\nzjmp %%10\nst r1, 5\n" 
 		"ldi %%1, %%2, r2\n st r2, -20\n" "ldi 5, r2, r3\nst r3, -50\n" "ldi 600, %%852, r2\nst r2, 32\n" "ldi %%0, %%0, r2\nzjmp %%10\nst r1, -12\n" 
 		"lldi %%1, %%2, r2\n st r2, -20\n" "lldi 5, r2, r3\nst r3, -50\n" "lldi 600, %%852, r2\nst r2, 32\n" "lldi %%0, %%0, r2\nzjmp %%10\nst r1, -12\n" )
-        mess=( "ld dir reg" "ld ind < IDX_MOD reg" "ld ind > IDX_MOD reg" "ld check carry" "lld dir reg" "lld ind reg" "lld check carry" 
+        mess=( "ld dir reg" "ld ind < IDX_MOD reg" "ld ind > IDX_MOD reg" "ld check carry" "lld dir reg" "lld check carry" 
 		"ldi dir dir reg" "ldi ind < IDX_MOD reg reg" "ldi ind > IDX_MOD dir reg" "ldi check carry" 
 		"lldi dir dir reg" "lldi ind < IDX_MOD reg reg" "lldi ind > IDX_MOD dir reg" "lldi check carry" )
         printf ""$BLUE"\nTesting ld, lld, ldi, lldi...\n\n$RES";
-        for i in `seq 0 14`
+        for i in `seq 0 13`
         do
                 create_test_champ "${cmd[i]}" "${cmd[i]}";
                 check_diff "$1" "${mess[i]}" "100";
