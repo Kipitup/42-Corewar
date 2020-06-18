@@ -43,7 +43,7 @@ void	count_player(int ac, char **av, t_vm *vm)
 	i = 1;
 	while (i < ac)
 	{
-		if (ft_strlen(av[i]) > 4 
+		if (ft_strlen(av[i]) > 4
 				&& ft_strcmp(&(av[i][ft_strlen(av[i]) - 4]), ".cor") == 0)
 		{
 			vm->nb_player++;
