@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 00:54:08 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 16:36:20 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 16:44:33 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,8 @@ unsigned int	lget_mem(t_vm *vm, unsigned long long pc,
 					long long pos, int size);
 unsigned int	lread_int(t_vm *vm, unsigned long long pc, long long pos);
 
-t_window		*init_window(t_window *window);
+
+t_window		*init_window(t_vm *vm, t_window *window);
 int				init_visu(t_vm *vm);
 void			display_round(t_vm *vm);
 void			refresh_window(t_vm *vm);

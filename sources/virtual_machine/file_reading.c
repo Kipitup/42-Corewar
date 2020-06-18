@@ -31,7 +31,7 @@ void	read_player_file(t_vm *vm)
 		if (ret != vm->player[i].prog_size)
 			exit_failure(vm, "%s is not well formated", vm->player[i].file, 0);
 		if ((ret = read(fd, &tmp, 1)) == -1)
-			exit_failure("Read", NULL, true);
+			exit_failure(vm, "Read", NULL, true);
 		if (ret != 0)
 			exit_failure(vm, "%s is not well formated", vm->player[i].file, 0);
 		load_champion_code(vm, code_buf, vm->player[i].prog_size);

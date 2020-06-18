@@ -21,9 +21,9 @@ void	corewar_vm(int ac, char **av)
 {
 	t_vm	vm;
 
-	vm->cursor = NULL;
-	vm->player = NULL;
-	vm->window = NULL;
+	vm.cursor = NULL;
+	vm.player = NULL;
+	vm.window = NULL;
 	if (ac < 2)
 		exit_failure(&vm, "Usage : ./corewar "
 		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);

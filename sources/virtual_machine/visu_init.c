@@ -6,13 +6,13 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 21:49:12 by vrobin            #+#    #+#             */
-/*   Updated: 2020/06/18 15:46:37 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 16:44:40 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_vm.h"
 
-t_window	*init_window(t_window *window)
+t_window	*init_window(t_vm *vm, t_window *window)
 {
 	WINDOW * memory;
 	WINDOW * info1;
@@ -97,7 +97,7 @@ int			init_visu(t_vm *vm)
 	window = NULL;
 	y = ymax;
 	x = 192;
-	vm->window = init_window(window);
+	vm->window = init_window(vm, window);
 	set_window(vm, y, ymax, xmax);
 	return (0);
 }
