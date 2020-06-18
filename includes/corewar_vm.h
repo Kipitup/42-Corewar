@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 00:54:08 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 16:14:35 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 16:36:20 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void			u_big_endian_to_u(unsigned int *big_endian);
 void			corewar_vm(int ac, char **av);
 void			init(int ac, char **av, t_vm *vm);
 void			complete_player_id(int ac, char **av, t_vm *vm);
-void			exit_failure(char *error_message, char *file,
+void			exit_failure(t_vm *vm, char *error_message, char *file,
 					t_bool call_perror);
 void			dump(t_vm *vm);
 void			print_player(t_vm *vm);
