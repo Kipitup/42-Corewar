@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 00:54:08 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 16:44:33 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 17:07:34 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,6 @@ t_bool			check_3reg(t_vm *vm, t_cursor *cur, unsigned char *arg,
 unsigned int	lget_mem(t_vm *vm, unsigned long long pc,
 					long long pos, int size);
 unsigned int	lread_int(t_vm *vm, unsigned long long pc, long long pos);
-
 
 t_window		*init_window(t_vm *vm, t_window *window);
 int				init_visu(t_vm *vm);
