@@ -17,7 +17,7 @@ NAME1 = asm
 NAME2 = revasm
 
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -I $(INC_DIR) -I ./libft/includes
+CFLAGS = -Wall -Wextra -Werror -I $(INC_DIR) -I ./libft/includes #-ofast
 
 INC_DIR = includes
 SRC_DIR = sources/virtual_machine
