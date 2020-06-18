@@ -89,7 +89,7 @@ ld_fun ()
 		"ldi dir dir reg" "ldi ind < IDX_MOD reg reg" "ldi ind > IDX_MOD dir reg" "ldi check carry" 
 		"lldi dir dir reg" "lldi ind < IDX_MOD reg reg" "lldi ind > IDX_MOD dir reg" "lldi check carry" )
         printf ""$BLUE"\nTesting ld, lld, ldi, lldi...\n\n$RES";
-        for i in `seq 0 5` #14
+        for i in `seq 0 14`
         do
                 create_test_champ "${cmd[i]}" "${cmd[i]}";
                 check_diff "$1" "${mess[i]}" "100";
