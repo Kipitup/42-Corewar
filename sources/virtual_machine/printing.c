@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   other.c                                            :+:      :+:    :+:   */
+/*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 13:47:04 by ssfar             #+#    #+#             */
-/*   Updated: 2020/04/29 13:47:04 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 16:11:15 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	dump(t_vm *vm)
 			if (i == MEM_SIZE)
 			{
 				write(1, "\n", 1);
+				free_all(vm);
 				exit(0);
 			}
 			j++;
@@ -36,6 +37,7 @@ void	dump(t_vm *vm)
 		ft_printf("%02x\n", vm->arena[i]);
 		i++;
 	}
+	free_all(vm);
 	exit(0);
 }
 
@@ -60,6 +62,13 @@ void	print_player(t_vm *vm)
 
 void	print_winner(t_vm *vm)
 {
+	if (vm->visualiser == true)
+	{
+		mvwprintw(vm->window->input, 1, 1, "Press any key to exit !");
+		wrefresh(vm->window->input);
+		getch();
+		endwin();
+	}
 	ft_printf("Player %d ", -vm->last_reported_alive);
 	ft_printf("(%s) won\n", vm->player[-vm->last_reported_alive - 1].prog_name);
 }

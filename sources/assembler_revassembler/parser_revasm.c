@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 19:44:03 by sadahan           #+#    #+#             */
-/*   Updated: 2020/06/11 18:33:34 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 16:23:44 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void			get_type(t_revinst *new, t_op op)
 static int			get_value(char *code, t_revinst *new, int n)
 {
 	size_t			i;
-	int				nb;
+	unsigned int	nb;
 
 	nb = 0;
 	i = 0;

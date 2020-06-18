@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors_revasm.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadahan <sadahan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 17:49:43 by user42            #+#    #+#             */
-/*   Updated: 2020/06/16 14:36:25 by sadahan          ###   ########.fr       */
+/*   Updated: 2020/06/18 16:22:48 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 static int	check_filename(char *file)
 {
 	if (!file)
+		return (0);
+	if (ft_strlen(file) < 4)
 		return (0);
 	if (ft_strncmp(&file[ft_strlen(file) - 4], ".cor", 4) != 0)
 		return (0);

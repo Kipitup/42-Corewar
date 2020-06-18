@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visu_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vrobin <vrobin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 21:49:33 by vrobin            #+#    #+#             */
-/*   Updated: 2020/06/17 21:50:09 by vrobin           ###   ########.fr       */
+/*   Updated: 2020/06/18 15:23:29 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		get_visu_input(t_vm *vm, int ch)
 	}
 	if (ch == 'q')
 	{
-		free_visu(vm);
+		free_all(vm);
 		system("clear");
 		exit(0);
 	}
@@ -48,10 +48,4 @@ int		get_visu_input(t_vm *vm, int ch)
 			ch = wgetch(vm->window->memory);
 	}
 	return (ch);
-}
-
-void	free_visu(t_vm *vm)
-{
-	free(vm->window);
-	endwin();
 }

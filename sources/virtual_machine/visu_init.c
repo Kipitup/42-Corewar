@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 21:49:12 by vrobin            #+#    #+#             */
-/*   Updated: 2020/06/18 01:58:45 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 15:46:37 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ t_window	*init_window(t_window *window)
 	info2 = NULL;
 	champions = NULL;
 	input = NULL;
-	window = malloc(sizeof(t_window));
+	if (!(window = malloc(sizeof(t_window))))
+	{
+		endwin();
+		exit_failure(vm, "Malloc Error", NULL, false);
+	}
 	window->memory = memory;
 	window->info1 = info1;
 	window->info2 = info2;
@@ -87,6 +91,7 @@ int			init_visu(t_vm *vm)
 	{
 		endwin();
 		ft_printf("ERROR, SCREEN TO SHORT, ZOOM OUT\n");
+		free_all(vm);
 		exit(-1);
 	}
 	window = NULL;

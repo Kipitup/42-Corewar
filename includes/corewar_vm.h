@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 00:54:08 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 12:54:39 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 16:14:35 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct	s_vm
 
 void			create_new_cursor(t_vm *vm, t_cursor *parent);
 void			free_cursor_list(t_vm *vm);
+void			free_all(t_vm *vm);
 void			read_player_file(t_vm *vm);
 void			check_file(t_vm *vm, int fd, int i);
 void			check_for_null_bytes(t_vm *vm, int fd, unsigned int i);
@@ -171,7 +172,6 @@ void			aff_champions(t_vm *vm);
 void			display_round(t_vm *vm);
 void			color_arena(t_vm *vm, t_cursor *cursor, unsigned long long pos);
 int				get_visu_input(t_vm *vm, int ch);
-void			free_visu(t_vm *vm);
 void			reset_light(t_vm *vm);
 void			pair_colors(t_vm *vm);
 void			color_player(t_vm *vm, size_t act_player,

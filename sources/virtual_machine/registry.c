@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 15:36:47 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 02:02:56 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 16:21:15 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ unsigned int	get_reg(t_vm *vm, t_cursor *cur, unsigned long long pos)
 {
 	unsigned int	ret;
 	unsigned char	*p;
+	unsigned int	mult;
 
+	mult = 256;
 	p = (unsigned char *)&(cur->reg[vm->arena[pos % MEM_SIZE] - 1]);
-	ret = (p[0] * 256 * 256 * 256 + p[1] * 256 * 256 + p[2] * 256 + p[3]);
+	ret = p[0] * mult * mult * mult + p[1] * mult * mult + p[2] * mult + p[3];
 	return (ret);
 }
 
