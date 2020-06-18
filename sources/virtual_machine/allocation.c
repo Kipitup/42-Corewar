@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/22 17:20:45 by ssfar             #+#    #+#             */
-/*   Updated: 2020/05/22 17:20:45 by ssfar            ###   ########.fr       */
+/*   Created: 2020/06/18 02:33:41 by ssfar             #+#    #+#             */
+/*   Updated: 2020/06/18 02:59:11 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	create_new_cursor(t_vm *vm, t_cursor *parent)
 		new_cursor->carry = false;
 		new_cursor->live = false;
 		new_cursor->wait_cylces = 0;
-		bzero(new_cursor->reg, REG_NUMBER * sizeof(*(new_cursor->reg)));
+		bzero(new_cursor->reg, sizeof(*(new_cursor->reg)) * REG_NUMBER);
 	}
 	new_cursor->opcode = 0;
 	new_cursor->next = vm->cursor;

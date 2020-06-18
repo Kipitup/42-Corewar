@@ -6,13 +6,13 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 13:27:02 by ssfar             #+#    #+#             */
-/*   Updated: 2020/04/17 13:27:02 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 02:03:25 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_vm.h"
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	corewar_vm(ac, av);
 }

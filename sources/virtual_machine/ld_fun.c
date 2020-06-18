@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 17:39:49 by cbretagn          #+#    #+#             */
-/*   Updated: 2020/06/17 03:05:07 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 02:14:49 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_lld(t_vm *vm, t_cursor *cur)
 void	ft_ldi(t_vm *vm, t_cursor *cur)
 {
 	unsigned char	arg[3];
-	int	val;
+	int				val;
 
 	get_ocp(vm, cur->pc + 1, arg);
 	if (check_param(arg, ALL, REG_DIR, REG_ONLY)
@@ -82,20 +82,18 @@ void	ft_ldi(t_vm *vm, t_cursor *cur)
 void	ft_lldi(t_vm *vm, t_cursor *cur)
 {
 	unsigned char	arg[3];
-	int	val;
+	int				val;
 
 	get_ocp(vm, cur->pc + 1, arg);
-	if (check_param(arg, ALL, REG_DIR, REG_ONLY)
-		&& check_reg(vm, arg[0], cur->pc + 2)
-		&& check_reg(vm, arg[1], cur->pc + 2 + arg_size(arg[0], false))
-		&& is_reg(vm->arena[(cur->pc + 1 + jump(arg, false)) % MEM_SIZE]))
+	if (check_param(arg, ALL, REG_DIR, REG_ONLY) && check_3reg(vm, cur, arg, 0))
 	{
 		if (arg[0] == REG_CODE)
 			val = get_reg(vm, cur, cur->pc + 2);
 		else if (arg[0] == DIR_CODE)
 			val = (short)lget_mem(vm, cur->pc, 2, 2);
 		else
-			val = get_mem(vm, cur->pc, (short)get_mem(vm, cur->pc, 2, 2) % IDX_MOD, 4);
+			val = get_mem(vm, cur->pc, (short)get_mem(vm, cur->pc, 2, 2)
+				% IDX_MOD, 4);
 		if (arg[1] == REG_CODE)
 			val += get_reg(vm, cur, cur->pc + 2 + arg_size(arg[0], false));
 		else

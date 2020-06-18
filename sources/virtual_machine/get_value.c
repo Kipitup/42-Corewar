@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 19:20:14 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/17 03:02:14 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 02:07:48 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ unsigned int	get_mem(t_vm *vm, unsigned long long pc, long long pos,
 unsigned int	read_int(t_vm *vm, unsigned long long pc, long long pos)
 {
 	unsigned int	ret;
-	int		i;
+	int				i;
 	unsigned char	*p;
 
 	p = (unsigned char *)&ret;
@@ -51,7 +51,7 @@ unsigned int	read_int(t_vm *vm, unsigned long long pc, long long pos)
 	return (ret);
 }
 
-void	write_int(t_vm *vm, unsigned int value, unsigned long long pc,
+void			write_int(t_vm *vm, unsigned int value, unsigned long long pc,
 	long long pos)
 {
 	int				i;

@@ -6,13 +6,13 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 19:14:54 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/17 02:37:59 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 02:01:40 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_vm.h"
 
-t_bool	check_one(unsigned char code, int allowed)
+t_bool			check_one(unsigned char code, int allowed)
 {
 	if (allowed == ALL && code == 0)
 		return (false);
@@ -31,13 +31,13 @@ t_bool	check_one(unsigned char code, int allowed)
 	return (true);
 }
 
-t_bool	check_param(unsigned char *arg, int p0, int p1, int p2)
+t_bool			check_param(unsigned char *arg, int p0, int p1, int p2)
 {
 	return (check_one(arg[0], p0) && check_one(arg[1], p1)
 		&& check_one(arg[2], p2));
 }
 
-int		jump(unsigned char *arg, t_bool big_dir)
+int				jump(unsigned char *arg, t_bool big_dir)
 {
 	return (arg_size(arg[0], big_dir) + arg_size(arg[1], big_dir)
 		+ arg_size(arg[2], big_dir));
@@ -54,7 +54,7 @@ unsigned int	arg_size(unsigned char arg, t_bool big_dir)
 	return (big_dir ? 4 : 2);
 }
 
-void	get_ocp(t_vm *vm, unsigned long long pos, unsigned char *tab)
+void			get_ocp(t_vm *vm, unsigned long long pos, unsigned char *tab)
 {
 	unsigned char	ocp;
 	unsigned char	tmp;

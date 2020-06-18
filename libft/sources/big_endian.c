@@ -6,13 +6,13 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 12:06:12 by ssfar             #+#    #+#             */
-/*   Updated: 2020/05/08 12:06:12 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 02:28:38 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_bool	big_endian()
+t_bool	big_endian(void)
 {
 	short			nb;
 	unsigned char	*p;

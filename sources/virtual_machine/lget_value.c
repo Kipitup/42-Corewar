@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 02:10:29 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/17 02:10:29 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 02:07:26 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ unsigned int	lread_int(t_vm *vm, unsigned long long pc,
 	long long pos)
 {
 	unsigned int	ret;
-	int		i;
+	int				i;
 	unsigned char	*p;
 
 	p = (unsigned char *)&ret;

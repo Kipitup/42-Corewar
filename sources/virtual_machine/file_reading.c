@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_file.c                                        :+:      :+:    :+:   */
+/*   file_reading.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:59:06 by ssfar             #+#    #+#             */
-/*   Updated: 2020/04/25 17:59:06 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 01:45:08 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	check_file(t_vm *vm, int fd, int i)
 	vm->player[i].comment[COMMENT_LENGTH] = '\0';
 	check_for_null_bytes(vm, fd, i);
 	create_new_cursor(vm, NULL);
-	cpy_to_reg(&(vm->cursor->reg[0]), -i -1);
+	cpy_to_reg(&(vm->cursor->reg[0]), -i - 1);
 	vm->cursor->pc = (MEM_SIZE / vm->nb_player) * i;
 	vm->cursor->player_id = i + 1;
 }
@@ -75,9 +75,9 @@ void	check_for_null_bytes(t_vm *vm, int fd, unsigned int i)
 	ssize_t			ret;
 
 	if ((ret = read(fd, &tmp, 4)) == -1)
-			exit_failure("Read", NULL, true);
-		if (tmp != 0)
-			exit_failure("%s is not well formated", vm->player[i].file, false);
+		exit_failure("Read", NULL, true);
+	if (tmp != 0)
+		exit_failure("%s is not well formated", vm->player[i].file, false);
 }
 
 void	load_champion_code(t_vm *vm, unsigned char *champion_code, int size)

@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 20:00:32 by ssfar             #+#    #+#             */
-/*   Updated: 2020/05/08 20:00:32 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 02:28:04 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_bool	atoul_overflow(const char *str, unsigned long long *result)
 {
 	unsigned long long	prev;
-	t_bool			overflow;
+	t_bool				overflow;
 
 	overflow = false;
 	if (!str || !result)

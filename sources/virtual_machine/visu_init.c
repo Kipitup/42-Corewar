@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visu_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vrobin <vrobin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 21:49:12 by vrobin            #+#    #+#             */
-/*   Updated: 2020/06/17 21:54:19 by vrobin           ###   ########.fr       */
+/*   Updated: 2020/06/18 01:58:45 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 t_window	*init_window(t_window *window)
 {
-	WINDOW		*memory;
-	WINDOW		*info1;
-	WINDOW		*info2;
-	WINDOW		*champions;
-	WINDOW		*input;
-
+	WINDOW * memory;
+	WINDOW * info1;
+	WINDOW * info2;
+	WINDOW * champions;
+	WINDOW * input;
 	memory = NULL;
 	info1 = NULL;
 	info2 = NULL;

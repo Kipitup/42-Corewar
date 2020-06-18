@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 13:46:51 by ssfar             #+#    #+#             */
-/*   Updated: 2020/04/29 13:46:51 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/06/18 01:56:28 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,12 @@ void	game_loop(t_vm *vm)
 		if (vm->cycle_counter == vm->cycle_to_die)
 			check(vm, vm->cursor, NULL);
 		if (vm->cursor == NULL || vm->cycle_to_die == 0)
-			break;
+			break ;
 		update_cursor(vm, vm->cursor);
 		vm->cycle_counter++;
 	}
 	if (vm->visualiser == true)
 		free_visu(vm);
-		
 }
 
 void	check(t_vm *vm, t_cursor *cur, t_cursor *prev)
@@ -98,7 +97,7 @@ void	update_cursor(t_vm *vm, t_cursor *tmp)
 		if (tmp->wait_cylces == 0)
 		{
 			if (tmp->opcode == 0)
-				tmp->pc	= (tmp->pc + 1) % MEM_SIZE;
+				tmp->pc = (tmp->pc + 1) % MEM_SIZE;
 			else
 			{
 				vm->tab[tmp->opcode](vm, tmp);
