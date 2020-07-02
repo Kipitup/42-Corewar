@@ -6,7 +6,7 @@
 #    By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 12:15:55 by ssfar             #+#    #+#              #
-#    Updated: 2020/06/18 02:47:13 by ssfar            ###   ########.fr        #
+#    Updated: 2020/06/19 22:23:04 by ssfar            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@
 NAME = corewar
 NAME1 = asm
 NAME2 = revasm
+
+LFT = libft/libft.a
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror -I $(INC_DIR) -I ./libft/includes #-ofast
@@ -81,25 +83,25 @@ EOC			= \033[0;0m
 RED			= \033[0;31m
 GREEN		= \033[0;32m
 
-all: $(NAME) $(NAME1) $(NAME2)
+all: $(NAME) $(NAME1) $(NAME2) $(LFT)
 
-$(NAME): $(OBJ)
-	@make -C ./libft
+$(NAME): $(LFT) $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) -lncurses ./libft/libft.a -o $@
 	@chmod 755 $(NAME)
 	@printf "$(GREEN)$(NAME) Makefile : $(NAME) created\n$(EOC)"
 
-$(NAME1): $(OBJ1)
-	@make -C ./libft
+$(NAME1): $(LFT) $(OBJ1)
 	@$(CC) $(CFLAGS) $(OBJ1) ./libft/libft.a -o $@
 	@chmod 755 $(NAME1)
 	@printf "$(GREEN)$(NAME) Makefile : $(NAME1) created\n$(EOC)"
 
-$(NAME2): $(OBJ2)
-	@make -C ./libft
+$(NAME2): $(LFT) $(OBJ2)
 	@$(CC) $(CFLAGS) $(OBJ2) ./libft/libft.a -o $@
 	@chmod 755 $(NAME2)
 	@printf "$(GREEN)$(NAME) Makefile : $(NAME2) created\n$(EOC)"
+
+$(LFT): FORCE
+	@make -C ./libft
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
@@ -119,3 +121,4 @@ fclean: clean
 	@printf "$(RED)$(NAME) Makefile : $(NAME), $(NAME1) and $(NAME2) deleted\n$(EOC)"
 
 re: fclean all
+FORCE:

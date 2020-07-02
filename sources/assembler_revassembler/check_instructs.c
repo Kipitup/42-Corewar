@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 16:53:20 by sadahan           #+#    #+#             */
-/*   Updated: 2020/06/11 18:32:06 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/02 21:31:40 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 ** to fill struct in file "instructs_asm.c"
 ** Associated file : get_instructs.c
 */
+
+t_inst			*free_invalid_arg_label(char *to_free)
+{
+	free(to_free);
+	return (NULL);
+}
 
 t_op			check_valid_inst(char *inst)
 {
@@ -80,11 +86,11 @@ static t_inst	*check_arg_value(char *arg, t_inst *nw)
 			error_malloc(-1);
 	}
 	if (nw->args[n].type == 1 && (!ft_isdigit(arg[j]) || nw->args[n].val > 99))
-		return (NULL);
+		return (free_invalid_arg_label(nw->args[n].label));
 	while (ft_isdigit(arg[j]) || arg[j] == '-')
 		j++;
 	if (arg[j] && !is_blank(arg[j]) && arg[j] != SEPARATOR_CHAR)
-		return (NULL);
+		return (free_invalid_arg_label(nw->args[n].label));
 	return (nw);
 }
 

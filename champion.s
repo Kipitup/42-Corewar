@@ -1,5 +1,5 @@
-.name		"Find_a_name"
-.comment	"Find_a_comment"
+.name		"Rick"
+.comment	"Wubbalubbadubdub !"
 
 ld	%190317316,r3
 ld	%256,r4

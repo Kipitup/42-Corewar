@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadahan <sadahan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 16:56:53 by sadahan           #+#    #+#             */
-/*   Updated: 2020/06/13 09:54:54 by sadahan          ###   ########.fr       */
+/*   Updated: 2020/07/02 21:16:04 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ t_op				check_valid_inst(char *inst);
 t_inst				*check_valid_args(char *args, t_op op, t_inst *new,
 					t_pos *p);
 
+t_inst				*free_invalid_arg_label(char *to_free);
 t_inst				*get_inst_args(char *file, t_pos *p, t_inst *new, t_op op);
 void				fill_typecode_and_size(t_op op, t_inst *new);
 t_inst				**replace_labels(t_inst **instructs, t_pos *p, char *file);
