@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 15:56:23 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 16:57:17 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/03 17:22:37 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	parsing(int ac, char **av, t_vm *vm)
 		else if (ft_strcmp(av[i], "-dump") == 0)
 			get_cycle_to_dump(ac, av, &i, vm);
 		else
-			exit_failure(vm, "Usage : ./corewar "
+			exit_failure(vm, "Usage : ./corewar -v "
 			"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
 		i++;
 	}
@@ -52,7 +52,7 @@ void	count_player(int ac, char **av, t_vm *vm)
 		i++;
 	}
 	if (vm->nb_player < 1)
-		exit_failure(vm, "Usage : ./corewar "
+		exit_failure(vm, "Usage : ./corewar -v "
 		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
 }
 
@@ -60,7 +60,7 @@ void	get_option_id(int ac, char **av, int *i, t_vm *vm)
 {
 	(*i)++;
 	if (*i == ac || vm->option_id != 0)
-		exit_failure(vm, "Usage : ./corewar "
+		exit_failure(vm, "Usage : ./corewar -v "
 		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
 	if (atoi_overflow(av[*i], &(vm->option_id)))
 		exit_failure(vm, "Player -n number is too big", NULL, false);
@@ -77,7 +77,7 @@ void	get_cycle_to_dump(int ac, char **av, int *i, t_vm *vm)
 {
 	(*i)++;
 	if (*i == ac || vm->dump == true)
-		exit_failure(vm, "Usage : ./corewar "
+		exit_failure(vm, "Usage : ./corewar -v "
 		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
 	if (!str_is_numeric_no_symbol(av[*i]))
 		exit_failure(vm, "Dump cycle must be a non negative number", NULL, 0);

@@ -6,7 +6,7 @@
 /*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 13:27:02 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 16:57:29 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/03 17:22:22 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	corewar_vm(int ac, char **av)
 	vm.window = NULL;
 	vm.nb_player = 0;
 	if (ac < 2)
-		exit_failure(&vm, "Usage : ./corewar "
+		exit_failure(&vm, "Usage : ./corewar -v "
 		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
 	init(ac, av, &vm);
 	parsing(ac, av, &vm);
@@ -73,7 +73,7 @@ void	complete_player_id(int ac, char **av, t_vm *vm)
 	int				j;
 
 	if (vm->option_id != 0)
-		exit_failure(vm, "Usage : ./corewar "
+		exit_failure(vm, "Usage : ./corewar -v "
 		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
 	i = 0;
 	while (i < ac)
