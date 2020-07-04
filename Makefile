@@ -18,7 +18,7 @@ NAME2 = revasm
 
 LFT = libft/libft.a
 
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I $(INC_DIR) -I ./libft/includes #-ofast
 
 INC_DIR = includes
