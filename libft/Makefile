@@ -15,7 +15,7 @@
 NAME = libft.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I $(INC_DIR) -g #-ofast
+CFLAGS = -Wall -Wextra -Werror -I $(INC_DIR) # -g -ofast
 
 
 INC_DIR = includes
