@@ -21,6 +21,8 @@ Bonus 25/25 :
 
 ## How to use
 
+#### Pre required : Make, GCC and Ncurses
+
 First of all, open a terminal, go into the project and build it :   
 ```  
 make
