@@ -19,6 +19,9 @@ Bonus 25/25:
 • Group & interpersonal  
 • Algorithms & AI  
 
+Developped for Linux type distributions.
+(It might work on OS, otherwise I will make some modifications later on).
+
 ## How to use
 
 #### Pre required : Make, GCC and Ncurses
