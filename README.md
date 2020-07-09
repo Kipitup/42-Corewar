@@ -20,7 +20,7 @@ Bonus 25/25:
 • Algorithms & AI  
 
 Developped for Linux type distributions.
-(It might work on OS, otherwise I will make some modifications later on).
+(It might work on OS, otherwise I may do modifications later on).
 
 ## How to use
 
