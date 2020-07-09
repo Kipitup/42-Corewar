@@ -19,7 +19,7 @@ Bonus 25/25:
 • Group & interpersonal  
 • Algorithms & AI  
 
-Developped for Linux type distributions.
+Developped for Linux type distributions.  
 (It might work on OS, otherwise I may do modifications later on).
 
 ## How to use
