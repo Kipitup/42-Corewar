@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visu_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 21:49:12 by vrobin            #+#    #+#             */
-/*   Updated: 2020/06/18 16:44:40 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/15 00:37:22 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ void		init_color_arena(t_vm *vm)
 	}
 }
 
-void		set_window(t_vm *vm, size_t y, size_t ymax, size_t xmax)
+void		set_window(t_vm *vm, size_t ymax, size_t xmax)
 {
 	size_t x;
 
 	x = 192;
-	vm->window->memory = newwin(y + 1, x + 1, 0, 0);
+	vm->window->memory = newwin(ymax + 1, x + 1, 0, 0);
 	vm->window->info1 = newwin(9, 75, 0, xmax - 75);
 	vm->window->champions = newwin(50 - 12.5, 75, 9, xmax - 75);
 	vm->window->input = newwin(11, 75, ymax - 22, xmax - 75);
@@ -78,8 +78,6 @@ int			init_visu(t_vm *vm)
 {
 	size_t		ymax;
 	size_t		xmax;
-	size_t		y;
-	size_t		x;
 	t_window	*window;
 
 	initscr();
@@ -95,9 +93,7 @@ int			init_visu(t_vm *vm)
 		exit(-1);
 	}
 	window = NULL;
-	y = ymax;
-	x = 192;
 	vm->window = init_window(vm, window);
-	set_window(vm, y, ymax, xmax);
+	set_window(vm, ymax, xmax);
 	return (0);
 }

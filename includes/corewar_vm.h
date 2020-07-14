@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar_vm.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 00:54:08 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 17:07:34 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/15 00:40:16 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ unsigned int	lget_mem(t_vm *vm, unsigned long long pc,
 unsigned int	lread_int(t_vm *vm, unsigned long long pc, long long pos);
 
 t_window		*init_window(t_vm *vm, t_window *window);
+void			set_window(t_vm *vm, size_t ymax, size_t xmax);
 int				init_visu(t_vm *vm);
 void			display_round(t_vm *vm);
 void			refresh_window(t_vm *vm);
