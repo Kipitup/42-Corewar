@@ -51,7 +51,7 @@ void	ft_aff(t_vm *vm, t_cursor *cur)
 	unsigned char	arg[3];
 
 	get_ocp(vm, cur->pc + 1, arg);
-	if (check_param(arg, REG_ONLY, 0, 0)
+	if (!vm->visualiser && check_param(arg, REG_ONLY, 0, 0)
 		&& is_reg(vm->arena[(cur->pc + 2) % MEM_SIZE]))
 		ft_printf("Aff: %c\n", get_reg(vm, cur, cur->pc + 2) % 256);
 	cur->pc = (cur->pc + 3) % MEM_SIZE;
