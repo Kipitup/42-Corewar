@@ -6,16 +6,16 @@
 /*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 18:31:55 by ssfar             #+#    #+#             */
-/*   Updated: 2020/07/23 02:24:05 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/23 02:56:26 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-** Aproximatively convert a floating point number (fnb) into a NULL terminated 
+** Aproximatively convert a floating point number (fnb) into a NULL terminated
 ** string.
-** Set (sharp) boolean to 1 to make sure the result always contain a '.', 
+** Set (sharp) boolean to 1 to make sure the result always contain a '.',
 ** even if no digits follow it.
 */
 
