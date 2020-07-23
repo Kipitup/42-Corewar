@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 18:55:05 by ssfar             #+#    #+#             */
-/*   Updated: 2019/08/14 16:55:26 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/23 01:20:32 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-** Return a copy of the string (s) whitout the whitspace character
+** Return a copy of the string (s) without the whitespace character
 ** '\t', ' ', '\n'.
 ** <i> The output string is malloced.
 */

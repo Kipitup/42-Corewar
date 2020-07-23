@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 19:44:32 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/11 18:45:08 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/23 02:30:19 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ size_t			count_char_occur(char *str, int_fast8_t c);
 size_t			count_word(const char *s, int_fast8_t separator);
 char			**free_strtab(char **tab);
 char			*aproximative_ftoa_no_symbol(long double fnb,
-	uint_fast8_t precision, uint_fast8_t sharp);
+	uint_fast8_t precision, t_bool sharp);
 char			*get_float_mantissa(long double fnb, uint_fast8_t precision);
 ssize_t			get_va_int(va_list arg, uint_fast8_t bits, uint_fast8_t z);
 size_t			get_va_uint(va_list arg, uint_fast8_t bits, uint_fast8_t z);

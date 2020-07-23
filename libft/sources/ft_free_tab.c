@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 19:31:35 by cbretagn          #+#    #+#             */
-/*   Updated: 2020/06/11 18:44:02 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/23 02:06:03 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Free a string tab and all it's strings.
+** Set everything to NULL.
+*/
 
 void	ft_free_tab(char **tab)
 {

@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   bubble_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vrobin <vrobin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 18:01:18 by ssfar             #+#    #+#             */
-/*   Updated: 2020/03/11 13:48:39 by vrobin           ###   ########.fr       */
+/*   Updated: 2020/07/23 02:09:41 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Sort numerically the (n) first elements of (arr) array.
+*/
 
 void	bubble_sort(size_t *arr, size_t n)
 {

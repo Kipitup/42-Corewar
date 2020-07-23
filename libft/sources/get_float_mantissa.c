@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_float_mantissa.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 18:27:46 by ssfar             #+#    #+#             */
-/*   Updated: 2019/10/19 19:20:48 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/23 02:01:28 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Roughly convert the (precision) first numbers of the mantissa from a floating
+** point number (fnb) into a malloced string.
+*/
 
 char	*get_float_mantissa(long double fnb, uint_fast8_t precision)
 {

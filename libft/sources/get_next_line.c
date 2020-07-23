@@ -3,14 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 18:14:06 by ssfar             #+#    #+#             */
-/*   Updated: 2019/11/08 18:07:11 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/23 01:56:40 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+/*
+** Reads from a file descriptor (fd) until it can't anymore or find a '\n'.
+** Allocate the string pointer pointed by line with the content read.
+** The string is '\0' terminated, the '\n' if present is erased.
+** Return 1, 0 or -1 depending on whether a line has been read, 
+** the reading has been completed, or an error has happened respectively.
+*/
+
+int					get_next_line(const int fd, char **line)
+{
+	static t_glist	*first = NULL;
+	t_glist			*lst;
+	char			buf[BUFF_SIZE + 1];
+
+	lst = first;
+	while (lst && lst->fd != fd)
+		lst = lst->next;
+	if (!line || BUFF_SIZE <= 0 || read(fd, buf, 0) < 0
+	|| !fill_lst(&first, &lst, fd, buf))
+		return (-1);
+	return (lst && ft_strlen(lst->s) ? get_line(&first, lst, line) : 0);
+}
+
+/*
+** Do the same as above get_next_line() function without buffering the reading.
+*/
+
+int					gnl_no_buff(const int fd, char **line)
+{
+	static t_glist	*first = NULL;
+	t_glist			*lst;
+	char			buf[1 + 1];
+
+	lst = first;
+	while (lst && lst->fd != fd)
+		lst = lst->next;
+	if (!line || read(fd, buf, 0) < 0
+	|| !fill_lst(&first, &lst, fd, buf))
+		return (-1);
+	return (lst && ft_strlen(lst->s) ? get_line(&first, lst, line) : 0);
+}
 
 static t_glist		*glstnew(char *s, int fd, t_glist *first)
 {
@@ -71,19 +113,4 @@ static int			fill_lst(t_glist **first, t_glist **lst, int fd, char *buf)
 			break ;
 	}
 	return (1);
-}
-
-int					get_next_line(const int fd, char **line)
-{
-	static t_glist	*first = NULL;
-	t_glist			*lst;
-	char			buf[BUFF_SIZE + 1];
-
-	lst = first;
-	while (lst && lst->fd != fd)
-		lst = lst->next;
-	if (!line || BUFF_SIZE <= 0 || read(fd, buf, 0) < 0
-	|| !fill_lst(&first, &lst, fd, buf))
-		return (-1);
-	return (lst && ft_strlen(lst->s) ? get_line(&first, lst, line) : 0);
 }

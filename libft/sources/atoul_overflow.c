@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   atoul_overflow.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 20:00:32 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 02:28:04 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/23 02:12:14 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Convert a number written in ascci to the pointed unsigned long long in
+** parameters, without taking the sign in account.
+** If the pointed value is overflowed the function return 1, else 0.
+** <I> Before the number is stored, the value pointed is set to 0 but only
+** if the string and pointer are not NULL.
+*/
 
 t_bool	atoul_overflow(const char *str, unsigned long long *result)
 {
@@ -34,11 +42,3 @@ t_bool	atoul_overflow(const char *str, unsigned long long *result)
 	}
 	return (overflow);
 }
-
-/*
-** Convert a number written in ascci to the pointed unsigned long long in
-** parameters, without taking the sign in account.
-** If the pointed value is overflowed the function return 1, else 0.
-** <I> Before the number is stored, the value pointed is set to 0 but only
-** if the string and pointer are not NULL.
-*/

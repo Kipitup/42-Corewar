@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   atoi_overflow.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 12:56:11 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 02:26:34 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/23 02:13:01 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Convert a number written in ascci to the pointed int in parameters.
+** If the pointed value is overflowed the function return 1, else 0.
+** <I> Before the number is stored, the value pointed is set to 0 but only
+** if the string and pointer are not NULL.
+*/
 
 t_bool	atoi_overflow(const char *str, int *result)
 {
@@ -40,10 +47,3 @@ t_bool	atoi_overflow(const char *str, int *result)
 	}
 	return (overflow);
 }
-
-/*
-** Convert a number written in ascci to the pointed int in parameters.
-** If the pointed value is overflowed the function return 1, else 0.
-** <I> Before the number is stored, the value pointed is set to 0 but only
-** if the string and pointer are not NULL.
-*/

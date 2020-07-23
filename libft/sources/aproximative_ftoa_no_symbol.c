@@ -3,17 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   aproximative_ftoa_no_symbol.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 18:31:55 by ssfar             #+#    #+#             */
-/*   Updated: 2019/11/10 16:40:33 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/23 02:24:05 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** Aproximatively convert a floating point number (fnb) into a NULL terminated 
+** string.
+** Set (sharp) boolean to 1 to make sure the result always contain a '.', 
+** even if no digits follow it.
+*/
+
 char	*aproximative_ftoa_no_symbol(long double fnb, uint_fast8_t precision,
-	uint_fast8_t sharp)
+	t_bool sharp)
 {
 	size_t			integer;
 	char			*mantissa;
