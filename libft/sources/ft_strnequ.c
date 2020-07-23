@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 18:10:46 by ssfar             #+#    #+#             */
-/*   Updated: 2019/08/14 17:26:32 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 01:41:31 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-** Compare the (n) first characters from the string (s1) whit (s2),
+** Compare the (n) first characters from the string (s1) with (s2),
 ** return 1 if they are the same or 0 if not.
 */
 

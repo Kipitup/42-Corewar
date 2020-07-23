@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 17:55:00 by ssfar             #+#    #+#             */
-/*   Updated: 2019/08/15 17:58:17 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 01:40:37 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 /*
 ** Create and return a new link.
 ** The element list->next is initialised to NULL, list->content_size and
-** list->content are initialised whit (content_size) and (content).
-** If (content) is NULL, list->content_size is initialised whit 0 regardless
+** list->content are initialised with (content_size) and (content).
+** If (content) is NULL, list->content_size is initialised with 0 regardless
 ** of the parameter (content_size).
 ** <i> the output link is malloced.
 */

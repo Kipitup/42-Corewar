@@ -14,7 +14,7 @@
 
 /*
 ** Take the pointer of a link from a list (alst), free him and all the
-** folowings links and set the pointer to NULL.
+** following links and set the pointer to NULL.
 */
 
 void	ft_lstdel(t_list **alst, void (*del)(void*, size_t))

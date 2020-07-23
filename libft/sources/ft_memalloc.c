@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 14:08:31 by ssfar             #+#    #+#             */
-/*   Updated: 2019/08/15 19:09:50 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 01:40:42 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-** Return a memory area of the length of (size) initialised whit '\0'.
+** Return a memory area of the length of (size) initialised with '\0'.
 ** <i> The output pointer is malloced.
 */
 

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   itoa_no_symbol.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 16:56:28 by ssfar             #+#    #+#             */
-/*   Updated: 2019/10/19 19:12:45 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 01:41:47 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-** Convert the signed number (nb) into a NULL-terminated string whitout sign.
+** Convert the signed number (nb) into a NULL-terminated string without sign.
 */
 
 char	*itoa_no_symbol(ssize_t nb)

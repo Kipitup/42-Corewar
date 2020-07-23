@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 17:01:08 by ssfar             #+#    #+#             */
-/*   Updated: 2019/08/15 19:01:34 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 01:41:23 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** Create a new string which result from the appliction of the function (f) to
-** each character of the string (s) whit their index precisised.
+** each character of the string (s) with their index precisised.
 ** <i> The ouput string is malloced.
 */
 

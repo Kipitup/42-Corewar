@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 15:49:08 by ssfar             #+#    #+#             */
-/*   Updated: 2019/09/11 18:18:10 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 01:41:14 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-** Apply the function (f) to each characters of the string (s) whit their
+** Apply the function (f) to each characters of the string (s) with their
 ** address and index provided to allow (f) to modify the string if necessary.
 */
 
