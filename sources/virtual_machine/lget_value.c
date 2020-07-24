@@ -6,14 +6,15 @@
 /*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 02:10:29 by ssfar             #+#    #+#             */
-/*   Updated: 2020/07/24 12:55:36 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 15:13:06 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_vm.h"
 
 /*
-** The function bellow read/write the values as they are, ignoring the endiannes.
+** Read (size) bytes from arena[(pc + pos) % MEM_SIZE] and return them in a big
+** endian unsinged int.
 */
 
 unsigned int	lget_mem(t_vm *vm, unsigned long long pc,
@@ -31,6 +32,10 @@ unsigned int	lget_mem(t_vm *vm, unsigned long long pc,
 	}
 	return (ret);
 }
+
+/*
+** Read and return an unsigned int from arena[(pc + pos) % MEM_SIZE].
+*/
 
 unsigned int	lread_int(t_vm *vm, unsigned long long pc,
 	long long pos)

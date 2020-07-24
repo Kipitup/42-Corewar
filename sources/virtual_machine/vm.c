@@ -6,11 +6,15 @@
 /*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 13:46:51 by ssfar             #+#    #+#             */
-/*   Updated: 2020/07/24 12:08:22 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 14:50:37 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_vm.h"
+
+/*
+** Core loop that handle process.
+*/
 
 void	game_loop(t_vm *vm)
 {
@@ -40,6 +44,11 @@ void	game_loop(t_vm *vm)
 	}
 }
 
+/*
+** Kill the process that didn't report a player as alive in the previous period.
+** Update the counters related to periods.
+*/
+
 void	check(t_vm *vm, t_process *cur, t_process *prev)
 {
 	while (cur != NULL)
@@ -68,6 +77,11 @@ void	check(t_vm *vm, t_process *cur, t_process *prev)
 	vm->nbr_live_reached = false;
 }
 
+/*
+** Kill and free (tmp) process.
+** Reattach the process linked list.
+*/
+
 void	remove_process(t_vm *vm, t_process **cur, t_process **prev)
 {
 	if (*prev != NULL)
@@ -83,6 +97,14 @@ void	remove_process(t_vm *vm, t_process **cur, t_process **prev)
 		*cur = vm->process;
 	}
 }
+
+/*
+** For (tmp) and all the following process :
+** -Assing a new opcode if there isn't already one; also assing the
+** corresponding number of cycle to wait.
+** -Decrease the number of cycle to wait.
+** -If the number of cycle to wait equal 0, verify and execute the operation.
+*/
 
 void	update_process(t_vm *vm, t_process *tmp)
 {

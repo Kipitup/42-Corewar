@@ -6,11 +6,15 @@
 /*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 15:36:47 by ssfar             #+#    #+#             */
-/*   Updated: 2020/07/24 12:07:55 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 13:45:23 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_vm.h"
+
+/*
+** Check if (reg) is a valid register number.
+*/
 
 t_bool			is_reg(unsigned char reg)
 {
@@ -18,6 +22,11 @@ t_bool			is_reg(unsigned char reg)
 		return (false);
 	return (true);
 }
+
+/*
+** Return false if the byte at (pos) % (MEM_SIZE) of memory arena correspond
+** to an invalid registry; else return true.
+*/
 
 t_bool			check_reg(t_vm *vm, unsigned char type, unsigned long long pos)
 {
@@ -37,6 +46,11 @@ t_bool			check_3reg(t_vm *vm, t_process *cur, unsigned char *arg,
 	return (false);
 }
 
+/*
+** Read an unsigned ing as big endian, from the registry defined in pos
+** arena[(pos) % MEM_SIZE].
+*/
+
 unsigned int	get_reg(t_vm *vm, t_process *cur, unsigned long long pos)
 {
 	unsigned int	ret;
@@ -48,6 +62,10 @@ unsigned int	get_reg(t_vm *vm, t_process *cur, unsigned long long pos)
 	ret = p[0] * mult * mult * mult + p[1] * mult * mult + p[2] * mult + p[3];
 	return (ret);
 }
+
+/*
+** Store (value) into (reg) as a big endian.
+*/
 
 void			cpy_to_reg(unsigned int *reg, unsigned int value)
 {

@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 13:47:04 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 16:11:15 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 13:21:06 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_vm.h"
+
+/*
+** Display the memory arena content in hexadecimal, in 32 bytes per line format.
+*/
 
 void	dump(t_vm *vm)
 {
@@ -41,6 +45,10 @@ void	dump(t_vm *vm)
 	exit(0);
 }
 
+/*
+** Print all the players id number, name, comment, and program size.
+*/
+
 void	print_player(t_vm *vm)
 {
 	int	i;
@@ -59,6 +67,10 @@ void	print_player(t_vm *vm)
 		}
 	}
 }
+
+/*
+** Print the id and name of the player who won.
+*/
 
 void	print_winner(t_vm *vm)
 {
