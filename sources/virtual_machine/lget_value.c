@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   lget_value.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 02:10:29 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 13:09:21 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 12:55:36 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_vm.h"
+
+/*
+** The function bellow read/write the values as they are, ignoring the endiannes.
+*/
 
 unsigned int	lget_mem(t_vm *vm, unsigned long long pc,
 	long long pos, int size)
@@ -27,10 +31,6 @@ unsigned int	lget_mem(t_vm *vm, unsigned long long pc,
 	}
 	return (ret);
 }
-
-/*
-** The function bellow read/write the values as they are, ignoring the endiannes
-*/
 
 unsigned int	lread_int(t_vm *vm, unsigned long long pc,
 	long long pos)

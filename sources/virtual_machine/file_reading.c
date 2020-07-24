@@ -6,7 +6,7 @@
 /*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:59:06 by ssfar             #+#    #+#             */
-/*   Updated: 2020/07/24 12:36:34 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 12:53:13 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	read_player_file(t_vm *vm)
 }
 
 /*
-** Part of read_player_file() function.
+** Parse .cor file, part of read_player_file() function.
 */
 
 void	check_file(t_vm *vm, int fd, int i)

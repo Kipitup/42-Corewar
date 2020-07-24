@@ -6,7 +6,7 @@
 /*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 13:27:02 by ssfar             #+#    #+#             */
-/*   Updated: 2020/07/24 12:07:42 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 13:09:03 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ void	corewar_vm(int ac, char **av)
 	free_all(&vm);
 }
 
+/*
+** Initialise most of the program structures, count the number of players and
+** malloc the player structure.
+*/
+
 void	init(int ac, char **av, t_vm *vm)
 {
 	int	i;
@@ -66,6 +71,11 @@ void	init(int ac, char **av, t_vm *vm)
 	load_function(vm);
 	load_cost(vm);
 }
+
+/*
+** Assign a player identification number to thoses without one, in the order of
+** availability.
+*/
 
 void	complete_player_id(int ac, char **av, t_vm *vm)
 {
@@ -95,6 +105,10 @@ void	complete_player_id(int ac, char **av, t_vm *vm)
 		i++;
 	}
 }
+
+/*
+** Free malloced memory, print a specific error message and close the program.
+*/
 
 void	exit_failure(t_vm *vm, char *error_message, char *file,
 			t_bool call_perror)

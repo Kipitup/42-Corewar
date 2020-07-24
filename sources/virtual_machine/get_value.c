@@ -6,7 +6,7 @@
 /*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 19:20:14 by ssfar             #+#    #+#             */
-/*   Updated: 2020/07/24 12:46:36 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 12:54:54 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ unsigned int	get_mem(t_vm *vm, unsigned long long pc, long long pos,
 }
 
 /*
-** Read 4 bytes from memory arena at as they are, ignoring the endiannes
+** Read 4 bytes from memory arena at (pc).
 */
 
 unsigned int	read_int(t_vm *vm, unsigned long long pc, long long pos)

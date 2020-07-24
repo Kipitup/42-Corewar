@@ -6,7 +6,7 @@
 /*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 02:33:41 by ssfar             #+#    #+#             */
-/*   Updated: 2020/07/24 12:22:03 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 12:51:04 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ void	create_new_process(t_vm *vm, t_process *parent)
 	new_process->next = vm->process;
 	vm->process = new_process;
 }
+
+/*
+** Release all malloced memory for the VM and the visualiser.
+*/
 
 void	free_all(t_vm *vm)
 {

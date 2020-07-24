@@ -6,11 +6,15 @@
 /*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 15:56:23 by ssfar             #+#    #+#             */
-/*   Updated: 2020/07/24 12:26:44 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 13:14:36 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_vm.h"
+
+/*
+** Parse the infos recived as program arguments.
+*/
 
 void	parsing(int ac, char **av, t_vm *vm)
 {
@@ -34,6 +38,11 @@ void	parsing(int ac, char **av, t_vm *vm)
 		i++;
 	}
 }
+
+/*
+** Count the number of .cor files into program arguments.
+** Close the program if there is not at least one player or too many.
+*/
 
 void	count_player(int ac, char **av, t_vm *vm)
 {
