@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   live_jmp_aff_fun.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 19:20:43 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/17 02:54:21 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 12:11:56 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_vm.h"
 
-void	ft_live(t_vm *vm, t_cursor *cur)
+/*
+** Function usable by process (read 42 corewar pdf subject for more infos).
+*/
+
+void	ft_live(t_vm *vm, t_process *cur)
 {
 	int	live_id;
 
@@ -33,7 +37,11 @@ void	ft_live(t_vm *vm, t_cursor *cur)
 	}
 }
 
-void	ft_zjmp(t_vm *vm, t_cursor *cur)
+/*
+** Function usable by process (read 42 corewar pdf subject for more infos).
+*/
+
+void	ft_zjmp(t_vm *vm, t_process *cur)
 {
 	short	jump;
 
@@ -46,7 +54,11 @@ void	ft_zjmp(t_vm *vm, t_cursor *cur)
 	}
 }
 
-void	ft_aff(t_vm *vm, t_cursor *cur)
+/*
+** Function usable by process (read 42 corewar pdf subject for more infos).
+*/
+
+void	ft_aff(t_vm *vm, t_process *cur)
 {
 	unsigned char	arg[3];
 

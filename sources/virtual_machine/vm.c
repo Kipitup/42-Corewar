@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 13:46:51 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 16:13:43 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 12:08:22 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ void	game_loop(t_vm *vm)
 			dump(vm);
 		}
 		if (vm->cycle_counter == vm->cycle_to_die)
-			check(vm, vm->cursor, NULL);
-		if (vm->cursor == NULL || vm->cycle_to_die == 0)
+			check(vm, vm->process, NULL);
+		if (vm->process == NULL || vm->cycle_to_die == 0)
 			break ;
-		update_cursor(vm, vm->cursor);
+		update_process(vm, vm->process);
 		vm->cycle_counter++;
 	}
 }
 
-void	check(t_vm *vm, t_cursor *cur, t_cursor *prev)
+void	check(t_vm *vm, t_process *cur, t_process *prev)
 {
 	while (cur != NULL)
 	{
@@ -51,7 +51,7 @@ void	check(t_vm *vm, t_cursor *cur, t_cursor *prev)
 			cur = cur->next;
 		}
 		else
-			remove_cursor(vm, &cur, &prev);
+			remove_process(vm, &cur, &prev);
 	}
 	vm->check_counter++;
 	if (vm->live_counter == NBR_LIVE || vm->nbr_live_reached == true
@@ -68,7 +68,7 @@ void	check(t_vm *vm, t_cursor *cur, t_cursor *prev)
 	vm->nbr_live_reached = false;
 }
 
-void	remove_cursor(t_vm *vm, t_cursor **cur, t_cursor **prev)
+void	remove_process(t_vm *vm, t_process **cur, t_process **prev)
 {
 	if (*prev != NULL)
 	{
@@ -78,13 +78,13 @@ void	remove_cursor(t_vm *vm, t_cursor **cur, t_cursor **prev)
 	}
 	else
 	{
-		vm->cursor = (*cur)->next;
+		vm->process = (*cur)->next;
 		free(*cur);
-		*cur = vm->cursor;
+		*cur = vm->process;
 	}
 }
 
-void	update_cursor(t_vm *vm, t_cursor *tmp)
+void	update_process(t_vm *vm, t_process *tmp)
 {
 	while (tmp != NULL)
 	{

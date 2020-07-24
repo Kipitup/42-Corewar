@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   add_sub_fun.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 18:09:13 by cbretagn          #+#    #+#             */
-/*   Updated: 2020/06/14 01:27:26 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 12:10:53 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_vm.h"
 
-void	ft_add(t_vm *vm, t_cursor *cur)
+/*
+** Function usable by process (read 42 corewar pdf subject for more infos).
+*/
+
+void	ft_add(t_vm *vm, t_process *cur)
 {
 	unsigned char	arg[3];
 	int				value;
@@ -31,7 +35,11 @@ void	ft_add(t_vm *vm, t_cursor *cur)
 	cur->pc = (cur->pc + 5) % MEM_SIZE;
 }
 
-void	ft_sub(t_vm *vm, t_cursor *cur)
+/*
+** Function usable by process (read 42 corewar pdf subject for more infos).
+*/
+
+void	ft_sub(t_vm *vm, t_process *cur)
 {
 	unsigned char	arg[3];
 	int				value;

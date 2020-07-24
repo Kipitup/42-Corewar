@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   registry.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 15:36:47 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 16:21:15 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 12:07:55 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_bool			check_reg(t_vm *vm, unsigned char type, unsigned long long pos)
 	return (true);
 }
 
-t_bool			check_3reg(t_vm *vm, t_cursor *cur, unsigned char *arg,
+t_bool			check_3reg(t_vm *vm, t_process *cur, unsigned char *arg,
 					t_bool big_dir)
 {
 	if (check_reg(vm, arg[0], cur->pc + 2)
@@ -37,7 +37,7 @@ t_bool			check_3reg(t_vm *vm, t_cursor *cur, unsigned char *arg,
 	return (false);
 }
 
-unsigned int	get_reg(t_vm *vm, t_cursor *cur, unsigned long long pos)
+unsigned int	get_reg(t_vm *vm, t_process *cur, unsigned long long pos)
 {
 	unsigned int	ret;
 	unsigned char	*p;

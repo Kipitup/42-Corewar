@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   binary_fun.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:11:29 by cbretagn          #+#    #+#             */
-/*   Updated: 2020/06/18 01:25:47 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 12:11:27 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_vm.h"
 
-void	ft_and(t_vm *vm, t_cursor *cur)
+/*
+** Function usable by process (read 42 corewar pdf subject for more infos).
+*/
+
+void	ft_and(t_vm *vm, t_process *cur)
 {
 	unsigned char	arg[3];
 	unsigned int	val;
@@ -40,7 +44,11 @@ void	ft_and(t_vm *vm, t_cursor *cur)
 	cur->pc = (cur->pc + 2 + jump(arg, true)) % MEM_SIZE;
 }
 
-void	ft_or(t_vm *vm, t_cursor *cur)
+/*
+** Function usable by process (read 42 corewar pdf subject for more infos).
+*/
+
+void	ft_or(t_vm *vm, t_process *cur)
 {
 	unsigned char	arg[3];
 	unsigned int	val;
@@ -68,7 +76,11 @@ void	ft_or(t_vm *vm, t_cursor *cur)
 	cur->pc = (cur->pc + 2 + jump(arg, true)) % MEM_SIZE;
 }
 
-void	ft_xor(t_vm *vm, t_cursor *cur)
+/*
+** Function usable by process (read 42 corewar pdf subject for more infos).
+*/
+
+void	ft_xor(t_vm *vm, t_process *cur)
 {
 	unsigned char	arg[3];
 	unsigned int	val;

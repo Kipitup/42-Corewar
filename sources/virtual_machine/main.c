@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 13:27:02 by ssfar             #+#    #+#             */
-/*   Updated: 2020/07/03 17:22:22 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 12:07:42 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	corewar_vm(int ac, char **av)
 {
 	t_vm	vm;
 
-	vm.cursor = NULL;
+	vm.process = NULL;
 	vm.player = NULL;
 	vm.window = NULL;
 	vm.nb_player = 0;

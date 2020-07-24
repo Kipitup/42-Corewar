@@ -6,14 +6,14 @@
 /*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 19:31:35 by cbretagn          #+#    #+#             */
-/*   Updated: 2020/07/23 02:06:03 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 12:28:05 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-** Free a string tab and all it's strings.
+** Free a string tab and all its strings.
 ** Set everything to NULL.
 */
 

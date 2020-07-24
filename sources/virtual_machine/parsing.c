@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 15:56:23 by ssfar             #+#    #+#             */
-/*   Updated: 2020/07/03 17:22:37 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 12:26:44 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ void	count_player(int ac, char **av, t_vm *vm)
 		"[-dump nbr_cycles] [[-n number] champion1.cor] ...", NULL, false);
 }
 
+/*
+** Get the option -n value and verify if it's a valid number.
+*/
+
 void	get_option_id(int ac, char **av, int *i, t_vm *vm)
 {
 	(*i)++;
@@ -68,10 +72,6 @@ void	get_option_id(int ac, char **av, int *i, t_vm *vm)
 		exit_failure(vm, "Player -n number must be between 1 and the ammount "
 		"of files", NULL, false);
 }
-
-/*
-** Get the option -n value and verify if it's a valid number **
-*/
 
 void	get_cycle_to_dump(int ac, char **av, int *i, t_vm *vm)
 {
@@ -86,6 +86,11 @@ void	get_cycle_to_dump(int ac, char **av, int *i, t_vm *vm)
 	vm->dump = true;
 }
 
+/*
+** Verify if the option -n value has already been used, if not, store the name
+** of the related file inside an array where the index correspond to its id - 1.
+*/
+
 void	set_option_id(char **av, int i, t_vm *vm)
 {
 	if (vm->option_id != 0)
@@ -97,8 +102,3 @@ void	set_option_id(char **av, int i, t_vm *vm)
 	}
 }
 
-/*
-** Verify if the option -n value has already been used, if not, **
-** store the name of the related file **
-** inside an array where the index correspond to it's id - 1. **
-*/

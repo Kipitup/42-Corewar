@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visu_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vrobin <vrobin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 21:39:31 by vrobin            #+#    #+#             */
-/*   Updated: 2020/06/17 21:39:32 by vrobin           ###   ########.fr       */
+/*   Updated: 2020/07/24 12:08:08 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ void	reset_light(t_vm *vm)
 	}
 }
 
-void	color_arena(t_vm *vm, t_cursor *cursor, unsigned long long pos)
+void	color_arena(t_vm *vm, t_process *process, unsigned long long pos)
 {
 	size_t	i;
 
 	i = 0;
 	while (i < 4)
 	{
-		vm->arena_color[(pos % MEM_SIZE) + i] = cursor->player_id
+		vm->arena_color[(pos % MEM_SIZE) + i] = process->player_id
 		+ vm->nb_player;
 		i++;
 	}

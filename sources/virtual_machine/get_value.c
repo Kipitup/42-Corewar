@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_value.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 19:20:14 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 13:08:43 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 12:46:36 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ unsigned int	get_mem(t_vm *vm, unsigned long long pc, long long pos,
 }
 
 /*
-** The function bellow read/write the values as they are, ignoring the endiannes
+** Read 4 bytes from memory arena at as they are, ignoring the endiannes
 */
 
 unsigned int	read_int(t_vm *vm, unsigned long long pc, long long pos)
@@ -50,6 +50,10 @@ unsigned int	read_int(t_vm *vm, unsigned long long pc, long long pos)
 	}
 	return (ret);
 }
+
+/*
+** Write (value) byte per byte inside memory arena at ((pc) + (pos)) % MEM_SIZE.
+*/
 
 void			write_int(t_vm *vm, unsigned int value, unsigned long long pc,
 	long long pos)

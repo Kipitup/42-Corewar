@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   load.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 19:13:55 by ssfar             #+#    #+#             */
-/*   Updated: 2020/05/24 19:21:25 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 12:12:08 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_vm.h"
+
+/*
+** Store the memory adress of the functions used by the process inside tab.
+*/
 
 void	load_function(t_vm *vm)
 {
@@ -31,6 +35,11 @@ void	load_function(t_vm *vm)
 	vm->tab[15] = ft_lfork;
 	vm->tab[16] = ft_aff;
 }
+
+/*
+** Store the cost in term of turns of the functions used by the process
+** inside (cost) tab.
+*/
 
 void	load_cost(t_vm *vm)
 {

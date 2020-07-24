@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ld_fun.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 17:39:49 by cbretagn          #+#    #+#             */
-/*   Updated: 2020/06/18 12:56:02 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 12:11:49 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_vm.h"
 
-void	ft_ld(t_vm *vm, t_cursor *cur)
+/*
+** Function usable by process (read 42 corewar pdf subject for more infos).
+*/
+
+void	ft_ld(t_vm *vm, t_process *cur)
 {
 	unsigned char	arg[3];
 	unsigned int	value;
@@ -32,7 +36,11 @@ void	ft_ld(t_vm *vm, t_cursor *cur)
 	cur->pc = (cur->pc + 2 + jump(arg, true)) % MEM_SIZE;
 }
 
-void	ft_lld(t_vm *vm, t_cursor *cur)
+/*
+** Function usable by process (read 42 corewar pdf subject for more infos).
+*/
+
+void	ft_lld(t_vm *vm, t_process *cur)
 {
 	unsigned char	arg[3];
 	unsigned int	value;
@@ -52,7 +60,11 @@ void	ft_lld(t_vm *vm, t_cursor *cur)
 	cur->pc = (cur->pc + 2 + jump(arg, true)) % MEM_SIZE;
 }
 
-void	ft_ldi(t_vm *vm, t_cursor *cur)
+/*
+** Function usable by process (read 42 corewar pdf subject for more infos).
+*/
+
+void	ft_ldi(t_vm *vm, t_process *cur)
 {
 	unsigned char	arg[3];
 	int				val;
@@ -79,7 +91,11 @@ void	ft_ldi(t_vm *vm, t_cursor *cur)
 	cur->pc = (cur->pc + 2 + jump(arg, false)) % MEM_SIZE;
 }
 
-void	ft_lldi(t_vm *vm, t_cursor *cur)
+/*
+** Function usable by process (read 42 corewar pdf subject for more infos).
+*/
+
+void	ft_lldi(t_vm *vm, t_process *cur)
 {
 	unsigned char	arg[3];
 	int				val;

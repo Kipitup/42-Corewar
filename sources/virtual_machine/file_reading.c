@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   file_reading.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssfar <ssfar@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ssfar <samisfar.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:59:06 by ssfar             #+#    #+#             */
-/*   Updated: 2020/06/18 16:16:03 by ssfar            ###   ########.fr       */
+/*   Updated: 2020/07/24 12:36:34 by ssfar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_vm.h"
+
+/*
+** Verify .cor files formating, store the infos read inside player structures
+** and load the program code inside the memory arena.
+*/
 
 void	read_player_file(t_vm *vm)
 {
@@ -40,6 +45,10 @@ void	read_player_file(t_vm *vm)
 	}
 }
 
+/*
+** Part of read_player_file() function.
+*/
+
 void	check_file(t_vm *vm, int fd, int i)
 {
 	ssize_t			ret;
@@ -63,10 +72,10 @@ void	check_file(t_vm *vm, int fd, int i)
 		exit_failure(vm, "read", NULL, true);
 	vm->player[i].comment[COMMENT_LENGTH] = '\0';
 	check_for_null_bytes(vm, fd, i);
-	create_new_cursor(vm, NULL);
-	cpy_to_reg(&(vm->cursor->reg[0]), -i - 1);
-	vm->cursor->pc = (MEM_SIZE / vm->nb_player) * i;
-	vm->cursor->player_id = i + 1;
+	create_new_process(vm, NULL);
+	cpy_to_reg(&(vm->process->reg[0]), -i - 1);
+	vm->process->pc = (MEM_SIZE / vm->nb_player) * i;
+	vm->process->player_id = i + 1;
 }
 
 void	check_for_null_bytes(t_vm *vm, int fd, unsigned int i)
@@ -80,6 +89,10 @@ void	check_for_null_bytes(t_vm *vm, int fd, unsigned int i)
 		exit_failure(vm, "%s is not well formated", vm->player[i].file, false);
 }
 
+/*
+** Store the program code inside the memory arena.
+*/
+
 void	load_champion_code(t_vm *vm, unsigned char *champion_code, int size)
 {
 	int	j;
@@ -87,10 +100,14 @@ void	load_champion_code(t_vm *vm, unsigned char *champion_code, int size)
 	j = 0;
 	while (j < size)
 	{
-		vm->arena[(vm->cursor->pc + j) % MEM_SIZE] = champion_code[j];
+		vm->arena[(vm->process->pc + j) % MEM_SIZE] = champion_code[j];
 		j++;
 	}
 }
+
+/*
+** Store the big endian value of an unsigned int on the current endiannes.
+*/
 
 void	u_big_endian_to_u(unsigned int *b_endian)
 {
@@ -99,7 +116,3 @@ void	u_big_endian_to_u(unsigned int *b_endian)
 	p = (unsigned char*)b_endian;
 	*b_endian = p[0] * 256 * 256 * 256 + p[1] * 256 * 256 + p[2] * 256 + p[3];
 }
-
-/*
-** Store the big endian value of an unsigned int on the current endiannes.
-*/
